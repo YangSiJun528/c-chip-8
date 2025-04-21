@@ -14,6 +14,7 @@
 /* 전역 변수 */
 bool quit = false;
 const double DT_MS = (1.0 / 60.0) * S_TO_MS; // 60Hz (16.666ms)
+const long BUSY_WAIT_NS = MS_TO_NS * 3;
 
 /* timespec 조작 함수 */
 // 두 timespec 더하기
@@ -47,6 +48,30 @@ double time_diff_ms(timespec start, timespec end) {
     return ts_to_ms(ts_sub(start, end));
 }
 
+/**
+ * 몰랐던 내용 메모
+ * inline
+ *   - 컴파일러에 “가능하면 호출 대신 코드에 직접 삽입”을 제안(옵션따라 안해줄수도 있음)
+ *   - 호출 오버헤드를 줄여 작은 함수에 유리
+ *   - static이나 extern 키워드 필요
+ *     - inline을 사용해도 external linkage이지만, inline definition으로 취급되어
+ *       링커용 심볼을 생성하지 않아 링킹 단계에서 Undefined symbols 에러가 발생하기 때문에
+ *       static/extern 키워드를 사용하여 internal/external linkage 지정 필요
+ *
+ * static
+ *   - internal linkage 지정 → 이 파일 내에서만 사용
+ *   - 외부 심볼을 생성하지 않아 링커 에러(미정의 심볼) 방지
+ *
+ * extern inline
+ *   - external linkage 유지 + inline 제안
+ *   - 심볼 생성 → 다른 T.U.에서 참조 가능
+ */
+static inline bool ts_before(const struct timespec *a,
+                             const struct timespec *b) {
+    return a->tv_sec  < b->tv_sec  ||
+          (a->tv_sec == b->tv_sec && a->tv_nsec < b->tv_nsec);
+}
+
 // 프레임 처리 및 타이밍
 void cycle(void) {
     struct timespec tick_interval = { 0, (long)(DT_MS * MS_TO_NS) };
@@ -73,10 +98,27 @@ void cycle(void) {
         t_sim_ms += DT_MS;
 
         clock_gettime(CLOCK_MONOTONIC, &now);
-        sleep_time = ts_sub(now, next_tick);
-        if (sleep_time.tv_sec < 0 || (sleep_time.tv_sec == 0 && sleep_time.tv_nsec > 0)) {
-            nanosleep(&sleep_time, NULL);
+
+        // 전체 남은 시간 until next_tick
+        timespec rem = ts_sub(now, next_tick);
+        long rem_ns = rem.tv_sec * NS_PER_S + rem.tv_nsec;
+
+        // 1) Sleep if there’s more than 1ms left
+        if (rem_ns > BUSY_WAIT_NS) {
+            // sleep_time = remaining_time - BUSY_WAIT_NS
+            timespec sleep_ts = {
+                .tv_sec  = (rem_ns - BUSY_WAIT_NS) / NS_PER_S,
+                .tv_nsec = (rem_ns - BUSY_WAIT_NS) % NS_PER_S
+            };
+            nanosleep(&sleep_ts, NULL);
         }
+
+        // 2) Busy‑wait for the final ~1ms
+        do {
+            clock_gettime(CLOCK_MONOTONIC, &now);
+        } while (ts_before(&now, &next_tick));
+
+        // Advance next_tick for the next frame
         next_tick = ts_add(next_tick, tick_interval);
 
         clock_gettime(CLOCK_MONOTONIC, &frame_end);
