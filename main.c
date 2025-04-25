@@ -19,6 +19,7 @@ bool quit = false; // 사이클 종료 플래그
 errcode_t system_errcode = ERR_NONE; // 시스템 에러
 
 // 시뮬레이션 시간 간격 (초), 한 프레임(단계)이 실제 시간으로 얼마나 진행되는지를 결정
+// 이거 프레임아님. 초당 cpu 명령 실행 횟수로 봐야 할 듯?
 // Δt = Delta Time
 const double DT = 1.0 / 60.0;
 
@@ -44,8 +45,8 @@ double ts_to_double(const timespec_t *);
  * 프로그램 시작점
  */
 int main(void) {
-    // 로그 레벨 설정 (DEBUG 이상 레벨만 출력)
-    log_set_level(LOG_DEBUG);
+    // 로그 레벨 설정
+    log_set_level(LOG_INFO);
 
     log_info("[MAIN] 프로그램 시작 - 버전 1.0.0");
     log_debug("[MAIN] 초기 설정: DT=%.6f초 (%.1fHz)", DT, 1.0/DT);
@@ -139,11 +140,14 @@ void cycle(void) {
                      frame_time, frame_count, DT);
         }
 
-        // 다음 틱까지 남은 시간 계산 - rem: remaining time
-        timespec_t rem = ts_sub(&now, &next_tick);
-
-        // 다음 틱 시간이 이미 지났는지 확인
-        if (rem.tv_sec < 0 || (rem.tv_sec == 0 && rem.tv_nsec < 0)) {
+        // 프레임 처리 시간이 다음 시간을 초과했는지 확인
+        if (now.tv_sec > next_tick.tv_sec ||
+            (now.tv_sec == next_tick.tv_sec &&
+             now.tv_nsec >= next_tick.tv_nsec)
+        ) {
+            // TODO: 그냥 이거 발생하면 종료시켜버리는게 나을지도?
+            //  이정도 애뮬레이터에서 속도가 느려질 정보면 꺼버리는게 맞는거 아닌가.
+            //  게임이라 제대로 플레이도 안될거 같은데
             // 프레임 드롭 발생
             frame_drops++;
             log_warn("[TIMING] 프레임 드롭 #%d (프레임 #%d)",
@@ -152,7 +156,12 @@ void cycle(void) {
             // 다음 틱 시간을 현재 시간 기준으로 재설정
             clock_gettime(CLOCK_MONOTONIC, &next_tick);
             next_tick = ts_add(&next_tick, &tick_interval);
+
+            // TODO: 틱 보정 필요.
+            //  한 사이클에 N번의 틱 시간이 지나가도 t_sim은 1번만 증가하고 있음
         } else {
+            // 다음 틱까지 남은 시간 계산 - rem: remaining time
+            timespec_t rem = ts_sub(&now, &next_tick);
             // 다음 틱 시간이 현재보다 미래인 경우 (남은 시간이 있음)
             log_trace("[TIMING] 남은 대기 시간: %.6f초", ts_to_double(&rem));
 
