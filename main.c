@@ -14,6 +14,7 @@
 #define NANOSECONDS_PER_SECOND 1000000000UL
 #define TICK_INTERVAL_NS       2000000UL
 #define LOG_INTERVAL_CYCLES    500
+#define TIMER_TICK_INTERVAL_NS (16666667L) // 16.666667ms in nanoseconds
 
 /* 전역 상태 변수 */
 static struct {
@@ -51,6 +52,7 @@ errcode_t cycle(void);
 static errcode_t process_cycle_work(void);
 static void init_chip8(void);
 static uint64_t get_current_time_ns(errcode_t* errcode);
+void update_timers(uint64_t tick_interval);
 
 /* 에러 처리 및 종료 매크로 */
 #define SET_ERROR_AND_EXIT(err_code) do { \
@@ -130,6 +132,9 @@ errcode_t cycle(void) {
                 cycle_time_ns, tick_interval);
             SET_ERROR_AND_EXIT(ERR_TICK_TIMEOUT);
         }
+
+        // 다음 틱 구하기 - 이거 여기 있는게 맞나
+        update_timers(tick_interval);
 
         // 다음 tick 계산
         next_tick += tick_interval;
@@ -220,4 +225,23 @@ static uint64_t get_current_time_ns(errcode_t* errcode) {
     }
 
     return (uint64_t)ts.tv_sec * NANOSECONDS_PER_SECOND + ts.tv_nsec;
+}
+
+//TODO: 굳이 함수로 뺄 필요까진 없었나 재사용하지도 않을껀데
+void update_timers(const uint64_t tick_interval) {
+    static u_int64_t accumulator = 0; // static이라 접근 제한된 전역 변수처럼 동작
+
+    accumulator += tick_interval;
+
+    //TODO: 1번 이상의 처리가 생기는 경우는 경고해야 하나? 느리게 수행되었다는거니까?
+    // 지금 호출에서는 고정된 tick_interval 값을 증가하니까 발생하지 않아서 굳이?
+    while (accumulator >= TIMER_TICK_INTERVAL_NS) {
+        if (chip8.sound_timer > 0) {
+            --chip8.sound_timer;
+        }
+        if (chip8.delay_timer > 0) {
+            --chip8.delay_timer;
+        }
+        accumulator -= TIMER_TICK_INTERVAL_NS;
+    }
 }
