@@ -12,7 +12,8 @@ struct chip8 {
   uint8_t v[16];              // 범용 레지스터
   uint8_t delay_timer;        // 딜레이
   uint8_t sound_timer;        // 사운드
-  uint64_t display[32];       // 64 * 32 디스플레이
+  uint8_t display[64 * 32];   // 64 * 32 디스플레이
+    // 원래는 uint64_t[32] 였는데, 구현하기 어려워서 좀 비효율적으로 변경
 };
 
 #endif // CHIP8_H

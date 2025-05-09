@@ -15,11 +15,13 @@
 #define TICK_INTERVAL_NS       2000000UL
 #define LOG_INTERVAL_CYCLES    500
 #define TIMER_TICK_INTERVAL_NS (16666667L) // 16.666667ms in nanoseconds
+#define FONTSET_ADDR 0x50 // TODO: 이름 Base addr이 더 나은듯?
+#define FONT_SIZE 40 // 0x28, 8 byte
 
 /* 전역 상태 변수 */
 static struct {
-    bool quit;                 // 종료 플래그
-    errcode_t error_code;      // 종료 시 에러 코드
+    bool quit; // 종료 플래그
+    errcode_t error_code; // 종료 시 에러 코드
 } g_state = {
     .quit = false,
     .error_code = ERR_NONE
@@ -44,14 +46,18 @@ static const uint8_t chip8_fontset[80] = {
     0xF0, 0x80, 0x80, 0x80, 0xF0, // C
     0xE0, 0x90, 0x90, 0x90, 0xE0, // D
     0xF0, 0x80, 0xF0, 0x80, 0xF0, // E
-    0xF0, 0x80, 0xF0, 0x80, 0x80  // F
+    0xF0, 0x80, 0xF0, 0x80, 0x80 // F
 };
 
 /* 함수 선언 */
 errcode_t cycle(void);
+
 static errcode_t process_cycle_work(void);
+
 static void init_chip8(void);
-static uint64_t get_current_time_ns(errcode_t* errcode);
+
+static uint64_t get_current_time_ns(errcode_t *errcode);
+
 void update_timers(uint64_t tick_interval);
 
 /* 에러 처리 및 종료 매크로 */
@@ -129,7 +135,7 @@ errcode_t cycle(void) {
             // 틱 간격보다 사이클 수행 시간이 더 긴 경우
             // 내부 작업은 시스템 콜을 포함하지 않으므로 이런 딜레이가 생기면 안되므로 바로 실패
             log_error("Frame overrun: %llu ns > %llu ns",
-                cycle_time_ns, tick_interval);
+                      cycle_time_ns, tick_interval);
             SET_ERROR_AND_EXIT(ERR_TICK_TIMEOUT);
         }
 
@@ -149,10 +155,10 @@ errcode_t cycle(void) {
         if (now >= next_tick) {
             // 누락된 틱 카운트 추가
             uint64_t error_ns = now - next_tick;
-            uint32_t missed = (uint32_t)(error_ns / tick_interval) + 1;
+            uint32_t missed = (uint32_t) (error_ns / tick_interval) + 1;
             skip_count += missed;
             log_error("Missed %u ticks (error: %llu ns). Total skips: %u",
-                missed, error_ns, skip_count);
+                      missed, error_ns, skip_count);
 
             // 오차 누적 방지: next_tick 보정
             next_tick += missed * tick_interval;
@@ -174,7 +180,7 @@ errcode_t cycle(void) {
         if (cycle_count % LOG_INTERVAL_CYCLES == 0) {
             const uint64_t exec_ns = cycle_end - cycle_start;
             log_info("cycle: %u \t max: %llu \t exec: %llu \t skips: %u",
-                cycle_count, max_cycle_ns, exec_ns, skip_count);
+                     cycle_count, max_cycle_ns, exec_ns, skip_count);
         }
     }
 
@@ -184,26 +190,314 @@ exit_cycle:
 
 // 실제 작업 처리 함수 (현재는 더미 구현)
 static errcode_t process_cycle_work(void) {
-    int loop_count = (rand() % (10000 - 1000 + 1)) + 1000;
-    int counter = 0;
+    const uint16_t opcode = (chip8.memory[chip8.pc] << 8)
+                            | chip8.memory[chip8.pc + 1];
+    chip8.pc += 2;
 
-    for (int i = 0; i < loop_count; i++) {
-        counter++;
+    // 여기서 쓰는 uint8_t 는 실제론 하위 4bit 만 사용하기도 함.
+    switch (opcode & 0xF000) {
+        case 0x0000: {
+            switch (opcode) {
+                case 0x00E0: {
+                    memset(chip8.display, 0, sizeof(chip8.display));
+                    break;
+                }
+                case 0x00EE: {
+                    chip8.pc = chip8.stack[chip8.sp];
+                    --chip8.sp;
+                    break;
+                }
+                default: {
+                    // 0NNN & default
+                    // 기계어 루틴 실행 - 구현 X
+                    /* This instruction is only used on the old computers
+                     * on which Chip-8 was originally implemented.
+                     * It is ignored by modern interpreters. */
+                    assert(false);
+                }
+            }
+        }
+        case 0x1000: {
+            // 1nnn - JP addr
+            const u_int16_t nnn = opcode & 0x0FFF;
+            chip8.pc = nnn;
+            break;
+        }
+        case 0x2000: {
+            // 2nnn - CALL addr
+            ++chip8.sp;
+            chip8.stack[chip8.sp] = chip8.memory[chip8.pc];
+
+            const u_int16_t nnn = opcode & 0x0FFF;
+            chip8.pc = nnn;
+            break;
+        }
+        case 0x3000: {
+            // 3xkk - SE Vx, byte
+            const uint8_t vx = (opcode & 0x0F00 >> 8);
+            const uint8_t nn = (opcode & 0x00FF); // 사실 & 없어도 될거같긴 함.
+            if (chip8.v[vx] == nn) {
+                chip8.pc += 2;
+            }
+            break;
+        }
+        case 0x4000: {
+            // 4xkk - SNE Vx, byte
+            const uint8_t vx = (opcode & 0x0F00 >> 8);
+            const uint8_t nn = (opcode & 0x00FF);
+            if (chip8.v[vx] != nn) {
+                chip8.pc += 2;
+            }
+            break;
+        }
+        case 0x5000: {
+            // 5xy0 - SE Vx, Vy
+            assert(opcode & 0x000F == 0);
+
+            const uint8_t vx = (opcode & 0x0F00 >> 8);
+            const uint8_t vy = (opcode & 0x00F0 >> 4);
+            if (chip8.v[vx] == chip8.v[vy]) {
+                chip8.pc += 2;
+            }
+            break;
+        }
+        case 0x6000: {
+            // 6xkk - LD Vx, byte
+            const uint8_t vx = (opcode & 0x0F00 >> 8);
+            const uint8_t kk = (opcode & 0x00FF);
+            chip8.v[vx] = kk;
+            break;
+        }
+        case 0x7000: {
+            // 7xkk - ADD Vx, byte
+            const uint8_t vx = (opcode & 0x0F00 >> 8);
+            const uint8_t kk = (opcode & 0x00FF);
+            chip8.v[vx] = vx + kk;
+            break;
+        }
+        case 0x8000: {
+            // 8xyn(N = 0-6, E)
+            const uint8_t vx = (opcode & 0x0F00 >> 8);
+            const uint8_t vy = (opcode & 0x00F0 >> 4);
+            const uint8_t n = (opcode & 0x000F);
+
+            assert(n == 0 || n == 1 || n == 2 || n == 3 ||
+                n == 4 || n == 5 || n == 6 || n == 0xE);
+
+            switch (n) {
+                case 0x00: {
+                    // 8xy0 - LD Vx, Vy
+                    chip8.v[vx] = chip8.v[vy];
+                }
+                case 0x01: {
+                    // 8xy1 - OR Vx, Vy
+                    chip8.v[vx] = chip8.v[vx] | chip8.v[vy];
+                }
+                case 0x02: {
+                    // 8xy2 - AND Vx, Vy
+                    chip8.v[vx] = chip8.v[vx] & chip8.v[vy];
+                }
+                case 0x03: {
+                    // 8xy3 - XOR Vx, Vy
+                    chip8.v[vx] = chip8.v[vx] ^ chip8.v[vy];
+                }
+                case 0x04: {
+                    // 8xy4 - ADD Vx, Vy
+                    chip8.v[vx] = chip8.v[vx] + chip8.v[vy];
+
+                    // set VF = carry
+                    if ((chip8.v[vx] & 0xFF00) > 0) {
+                        chip8.v[0xF - 1] = 1;
+                        chip8.v[vx] = chip8.v[vx] & 0x00FF;
+                    } else {
+                        chip8.v[0xF - 1] = 0;
+                    }
+                }
+                case 0x05: {
+                    // 8xy5 - SUB Vx, Vy
+
+                    // set VF = NOT borrow
+                    chip8.v[0xF - 1] = (chip8.v[vx] > chip8.v[vy]);
+
+                    chip8.v[vx] = chip8.v[vx] - chip8.v[vy];
+                }
+                case 0x06: {
+                    // 8xy6 - SHR Vx {, Vy}
+                    // Shift Right, {, Vy}는 옵션. 일부 구현해서 사용함.
+
+                    // set VF = least-significant bit
+                    chip8.v[0xF - 1] = chip8.v[vx] & 0x1;
+
+                    chip8.v[vx] = chip8.v[vx] >> 1;
+                }
+                case 0x07: {
+                    // 8xy7 - SUBN Vx, Vy
+                    // Subtract with Borrow
+
+                    // set VF = NOT borrow
+                    chip8.v[0xF - 1] = (chip8.v[vy] > chip8.v[vx]);
+
+                    chip8.v[vy] = chip8.v[vy] - chip8.v[vx];
+                }
+                case 0x0E: {
+                    // 8xyE - SHL Vx {, Vy}
+                    // Shift Left
+
+                    // set VF = most significant bit
+                    chip8.v[0xF - 1] = chip8.v[vx] & 0x8000;
+
+                    chip8.v[vx] = chip8.v[vx] << 1;
+                }
+            }
+            break;
+        }
+        case 0x9000: {
+            // 9xy0 - SNE Vx, Vy
+            const uint8_t vx = (opcode & 0x0F00 >> 8);
+            const uint8_t vy = (opcode & 0x00F0 >> 4);
+            if (chip8.v[vx] != chip8.v[vy]) {
+                chip8.pc += 2;
+            }
+            break;
+        }
+        case 0xA000: {
+            // Annn - LD I, addr
+            const u_int16_t nnn = opcode & 0x0FFF;
+            chip8.i = nnn;
+            break;
+        }
+        case 0xB000: {
+            // Bnnn - JP V0, addr
+            const u_int16_t nnn = opcode & 0x0FFF;
+            chip8.pc = nnn + chip8.v[0];
+            break;
+        }
+        case 0xC000: {
+            // Cxkk - RND Vx, byte
+            const uint8_t vx = (opcode & 0x0F00 >> 8);
+            const uint8_t kk = (opcode & 0x00FF);
+            chip8.v[vx] = (u_int8_t) (rand() % 256) & kk;
+            break;
+        }
+        case 0xD000: {
+            // Dxyn - DRW Vx, Vy, nibble
+            const uint8_t vx = (opcode & 0x0F00 >> 8);
+            const uint8_t vy = (opcode & 0x00F0 >> 4);
+            const uint8_t n = (opcode & 0x000F);
+            bool is_overwritten = false;
+
+            const uint16_t offset = (vx * 64) + vy;
+
+            // 매직넘버 대신 쓰는거, 일단 임시로
+            uint8_t display_arr_size = 64 * 32;
+
+            uint8_t sprite[display_arr_size];
+
+            // 뭔가 포인터 잘 쓰면 여기 개선 할 수 있을거 같음.
+            memset(sprite, -1, sizeof(sprite));
+            memcpy(sprite, &chip8.memory[chip8.i], n);
+
+            for (int i = 0; i < n; i++) {
+                assert(sprite[i] == 0 || sprite[i] == 1);
+                assert((i+offset) < display_arr_size);
+
+                if (sprite[i] & chip8.display[i + offset] > 0) {
+                    is_overwritten = true;
+                }
+                chip8.display[i + offset] = sprite[i];
+            }
+
+            chip8.v[0xF - 1] = is_overwritten;
+            break;
+        }
+        case 0xE000: {
+            if (opcode & 0x00FF == 0x009E) {
+                // Ex9E - SKP Vx
+                const uint8_t vx = (opcode & 0x0F00 >> 8);
+                //TODO: vx 키보드 눌림 체크 & 눌렸으면 PC 증가
+            }
+            if (opcode & 0x00FF == 0x00A1) {
+                // ExA1 - SKNP Vx
+                const uint8_t vx = (opcode & 0x0F00 >> 8);
+                //TODO: vx 키보드 눌림 체크 & 안눌렸으면 PC 증가
+            }
+            break;
+        }
+        case 0xF000: {
+            const uint8_t vx = (opcode & 0x0F00) >> 8;
+            switch (opcode & 0x00FF) {
+                case 0x0007: {
+                    // Fx07 - LD Vx, DT
+                    chip8.v[vx] = chip8.delay_timer;
+                    break;
+                }
+                case 0x000A: {
+                    // Fx0A - LD Vx, K
+                    // TODO: 키 입력을 기다렸다가, 눌린 키 값을 Vx에 저장
+                    //  Blocking 키 대기 로직 필요
+                    break;
+                }
+                case 0x0015: {
+                    // Fx15 - LD DT, Vx
+                    chip8.delay_timer = chip8.v[vx];
+                    break;
+                }
+                case 0x0018: {
+                    // Fx18 - LD ST, Vx
+                    chip8.sound_timer = chip8.v[vx];
+                    break;
+                }
+                case 0x001E: {
+                    // Fx1E - ADD I, Vx
+                    chip8.i += chip8.v[vx];
+                    break;
+                }
+                case 0x0029: {
+                    // Fx29 - LD F, Vx
+                    chip8.i = FONTSET_ADDR + (chip8.v[vx] * FONT_SIZE);
+                    break;
+                }
+                case 0x0033: {
+                    // Fx33 - LD B, Vx
+                    chip8.memory[chip8.i] = vx / 100;
+                    chip8.memory[chip8.i + 1] = (vx % 100) / 10;
+                    chip8.memory[chip8.i + 2] = vx % 10;
+                    break;
+                }
+                case 0x0055: {
+                    // Fx55 - LD [I], Vx
+                    for (uint8_t r = 0; r <= vx; r++) {
+                        chip8.memory[chip8.i + r] = chip8.v[r];
+                    }
+                    break;
+                }
+                case 0x0065: {
+                    // Fx65 - LD Vx, [I]
+                    for (uint8_t r = 0; r <= vx; r++) {
+                        chip8.v[r] = chip8.memory[chip8.i + r];
+                    }
+                    break;
+                }
+                default:
+                    return ERR_NO_SUPPORTED_OPCODE;
+            }
+        default:
+            return ERR_NO_SUPPORTED_OPCODE;
+        }
     }
-
     return ERR_NONE;
 }
 
 static void init_chip8(void) {
     chip8.pc = 0x200;
-    chip8.i  = 0;
+    chip8.i = 0;
     chip8.sp = 0;
 
     memset(chip8.v, 0, sizeof(chip8.v));
     memset(chip8.stack, 0, sizeof(chip8.stack));
 
     memset(chip8.memory, 0, sizeof(chip8.memory));
-    memcpy(chip8.memory, chip8_fontset, sizeof(chip8_fontset));
+    memcpy(chip8.memory + FONTSET_ADDR, chip8_fontset, sizeof(chip8_fontset));
 
     chip8.delay_timer = 0;
     chip8.sound_timer = 0;
@@ -211,7 +505,7 @@ static void init_chip8(void) {
     memset(chip8.display, 0, sizeof(chip8.display));
 }
 
-static uint64_t get_current_time_ns(errcode_t* errcode) {
+static uint64_t get_current_time_ns(errcode_t *errcode) {
     assert(errcode != NULL);
 
     *errcode = ERR_NONE;
@@ -224,7 +518,7 @@ static uint64_t get_current_time_ns(errcode_t* errcode) {
         return (uint64_t) -1; // 최대 값 사용
     }
 
-    return (uint64_t)ts.tv_sec * NANOSECONDS_PER_SECOND + ts.tv_nsec;
+    return (uint64_t) ts.tv_sec * NANOSECONDS_PER_SECOND + ts.tv_nsec;
 }
 
 //TODO: 굳이 함수로 뺄 필요까진 없었나 재사용하지도 않을껀데

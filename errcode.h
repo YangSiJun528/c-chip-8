@@ -8,6 +8,7 @@ typedef enum {
     ERR_TIME_FUNC,
     ERR_INVALID_PARAMETER,
     ERR_UNKNOWN,
+    ERR_NO_SUPPORTED_OPCODE
 } errcode_t;
 
 #endif // ERRCODE_H
