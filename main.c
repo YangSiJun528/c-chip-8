@@ -191,9 +191,10 @@ exit_cycle:
 static errcode_t process_cycle_work(void) {
     const uint16_t opcode = (chip8.memory[chip8.pc] << 8)
                             | chip8.memory[chip8.pc + 1];
+    log_trace("opcode 0x%04x", opcode);
+
     chip8.pc += 2;
 
-    log_trace("opcode 0x%04x", opcode);
     //return ERR_NONE;
 
     switch (opcode & 0xF000) {
@@ -218,6 +219,7 @@ static errcode_t process_cycle_work(void) {
                     assert(false);
                 }
             }
+            break;
         }
         case 0x1000: {
             // 1nnn - JP addr
