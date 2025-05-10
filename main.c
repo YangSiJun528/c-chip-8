@@ -311,17 +311,17 @@ static errcode_t process_cycle_work(void) {
 
                     // set VF = carry
                     if ((chip8.v[vx] & 0xFF00) > 0) {
-                        chip8.v[0xF - 1] = 1;
+                        chip8.v[0xF] = 1;
                         chip8.v[vx] = chip8.v[vx] & 0x00FF;
                     } else {
-                        chip8.v[0xF - 1] = 0;
+                        chip8.v[0xF] = 0;
                     }
                 }
                 case 0x05: {
                     // 8xy5 - SUB Vx, Vy
 
                     // set VF = NOT borrow
-                    chip8.v[0xF - 1] = (chip8.v[vx] > chip8.v[vy]);
+                    chip8.v[0xF] = (chip8.v[vx] > chip8.v[vy]);
 
                     chip8.v[vx] = chip8.v[vx] - chip8.v[vy];
                 }
@@ -330,7 +330,7 @@ static errcode_t process_cycle_work(void) {
                     // Shift Right, {, Vy}는 옵션. 일부 구현해서 사용함.
 
                     // set VF = least-significant bit
-                    chip8.v[0xF - 1] = chip8.v[vx] & 0x1;
+                    chip8.v[0xF] = chip8.v[vx] & 0x1;
 
                     chip8.v[vx] = chip8.v[vx] >> 1;
                 }
@@ -339,7 +339,7 @@ static errcode_t process_cycle_work(void) {
                     // Subtract with Borrow
 
                     // set VF = NOT borrow
-                    chip8.v[0xF - 1] = (chip8.v[vy] > chip8.v[vx]);
+                    chip8.v[0xF] = (chip8.v[vy] > chip8.v[vx]);
 
                     chip8.v[vy] = chip8.v[vy] - chip8.v[vx];
                 }
@@ -348,7 +348,7 @@ static errcode_t process_cycle_work(void) {
                     // Shift Left
 
                     // set VF = most significant bit
-                    chip8.v[0xF - 1] = chip8.v[vx] & 0x8000;
+                    chip8.v[0xF] = chip8.v[vx] & 0x8000;
 
                     chip8.v[vx] = chip8.v[vx] << 1;
                 }
@@ -411,7 +411,7 @@ static errcode_t process_cycle_work(void) {
                 chip8.display[i + offset] = sprite[i];
             }
 
-            chip8.v[0xF - 1] = is_overwritten;
+            chip8.v[0xF] = is_overwritten;
             break;
         }
         case 0xE000: {
