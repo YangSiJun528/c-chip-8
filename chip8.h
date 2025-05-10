@@ -4,7 +4,7 @@
 #include <stdint.h>
 
 struct chip8 {
-  uint8_t memory[4096 / 8];   // 2^12 - 즉 주소의 크기는 12bit
+  uint8_t memory[4096];       // 최대 4kb
   uint16_t stack[16];         // 2^8 - 서브루틴 중첨 처리
   uint8_t sp;                 // 스택 포인터 (2^8로 충분)
   uint16_t i;                 // 메모리 주소 저장용 레지스터

@@ -17,6 +17,9 @@
 #define TIMER_TICK_INTERVAL_NS (16666667L) // 16.666667ms in nanoseconds
 #define FONTSET_ADDR 0x50 // TODO: 이름 Base addr이 더 나은듯?
 #define FONT_SIZE 40 // 0x28, 8 byte
+#define PROGRAM_START_ADDR 0x200
+#define MEMORY_MAX_SIZE 0x4096
+#define LOG_LEVEL LOG_TRACE
 
 /* 전역 상태 변수 */
 static struct {
@@ -51,13 +54,9 @@ static const uint8_t chip8_fontset[80] = {
 
 /* 함수 선언 */
 errcode_t cycle(void);
-
 static errcode_t process_cycle_work(void);
-
-static void init_chip8(void);
-
+static errcode_t init_chip8(void);
 static uint64_t get_current_time_ns(errcode_t *errcode);
-
 void update_timers(uint64_t tick_interval);
 
 /* 에러 처리 및 종료 매크로 */
@@ -68,7 +67,7 @@ void update_timers(uint64_t tick_interval);
 } while(0)
 
 int main(void) {
-    log_set_level(LOG_INFO);
+    log_set_level(LOG_LEVEL);
     log_info("Program started");
 
     // 랜덤 시드 설정
@@ -177,7 +176,7 @@ errcode_t cycle(void) {
 
         // 정상적으로 실행된 사이클 카운트
         ++cycle_count;
-        if (cycle_count % LOG_INTERVAL_CYCLES == 0) {
+        if (cycle_count % LOG_INTERVAL_CYCLES == 0 || LOG_LEVEL == LOG_TRACE) {
             const uint64_t exec_ns = cycle_end - cycle_start;
             log_info("cycle: %u \t max: %llu \t exec: %llu \t skips: %u",
                      cycle_count, max_cycle_ns, exec_ns, skip_count);
@@ -194,7 +193,9 @@ static errcode_t process_cycle_work(void) {
                             | chip8.memory[chip8.pc + 1];
     chip8.pc += 2;
 
-    // 여기서 쓰는 uint8_t 는 실제론 하위 4bit 만 사용하기도 함.
+    log_trace("opcode 0x%04x", opcode);
+    //return ERR_NONE;
+
     switch (opcode & 0xF000) {
         case 0x0000: {
             switch (opcode) {
@@ -213,6 +214,7 @@ static errcode_t process_cycle_work(void) {
                     /* This instruction is only used on the old computers
                      * on which Chip-8 was originally implemented.
                      * It is ignored by modern interpreters. */
+                    log_error("opcode 0x%04x", opcode);
                     assert(false);
                 }
             }
@@ -415,11 +417,13 @@ static errcode_t process_cycle_work(void) {
                 // Ex9E - SKP Vx
                 const uint8_t vx = (opcode & 0x0F00 >> 8);
                 //TODO: vx 키보드 눌림 체크 & 눌렸으면 PC 증가
+                assert(false);
             }
             if (opcode & 0x00FF == 0x00A1) {
                 // ExA1 - SKNP Vx
                 const uint8_t vx = (opcode & 0x0F00 >> 8);
                 //TODO: vx 키보드 눌림 체크 & 안눌렸으면 PC 증가
+                assert(false);
             }
             break;
         }
@@ -435,6 +439,7 @@ static errcode_t process_cycle_work(void) {
                     // Fx0A - LD Vx, K
                     // TODO: 키 입력을 기다렸다가, 눌린 키 값을 Vx에 저장
                     //  Blocking 키 대기 로직 필요
+                    assert(false);
                     break;
                 }
                 case 0x0015: {
@@ -488,22 +493,36 @@ static errcode_t process_cycle_work(void) {
     return ERR_NONE;
 }
 
-static void init_chip8(void) {
-    chip8.pc = 0x200;
-    chip8.i = 0;
-    chip8.sp = 0;
+//TODO: 에러 로그 내용 손보기
+static errcode_t init_chip8(void) {
+    memset(&chip8, 0, sizeof(chip8));
 
-    memset(chip8.v, 0, sizeof(chip8.v));
-    memset(chip8.stack, 0, sizeof(chip8.stack));
+    chip8.pc = PROGRAM_START_ADDR;
 
-    memset(chip8.memory, 0, sizeof(chip8.memory));
     memcpy(chip8.memory + FONTSET_ADDR, chip8_fontset, sizeof(chip8_fontset));
 
-    chip8.delay_timer = 0;
-    chip8.sound_timer = 0;
+    const char* rom_path = "/Users/bonditmanager/CLionProjects/c-chip-8/IBM_Logo.ch8";
+    FILE *rom = fopen(rom_path, "rb");
+    if (!rom) {
+        log_error("ROM 열기 실패: %s", strerror(errno));
+        return ERR_FILE_NOT_FOUND;
+    }
 
-    memset(chip8.display, 0, sizeof(chip8.display));
+    fseek(rom, 0, SEEK_END);
+    long rom_size = ftell(rom);
+    fseek(rom, 0, SEEK_SET);
+
+    size_t n = fread(chip8.memory + PROGRAM_START_ADDR, 1, rom_size, rom);
+    fclose(rom);
+    if (n != (size_t)rom_size || n > MEMORY_MAX_SIZE) {
+        log_error("ROM 크기 비정상: %ld", rom_size);
+        fclose(rom);
+        return ERR_ROM_TOO_LARGE;
+    }
+
+    return ERR_NONE;
 }
+
 
 static uint64_t get_current_time_ns(errcode_t *errcode) {
     assert(errcode != NULL);
@@ -539,3 +558,5 @@ void update_timers(const uint64_t tick_interval) {
         accumulator -= TIMER_TICK_INTERVAL_NS;
     }
 }
+
+
