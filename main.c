@@ -223,7 +223,11 @@ static errcode_t process_cycle_work(void) {
         }
         case 0x1000: {
             // 1nnn - JP addr
+            struct chip8 c = chip8;
             const u_int16_t nnn = opcode & 0x0FFF;
+            if (0x1228 == opcode) {
+                print_display(&c);
+            }
             chip8.pc = nnn;
             break;
         }
@@ -384,34 +388,38 @@ static errcode_t process_cycle_work(void) {
             break;
         }
         case 0xD000: {
-            // Dxyn - DRW Vx, Vy, nibble
+            // Dxyn - DRW Vx, Vy, nibble: draw n-byte sprite at (Vx, Vy)
             const uint8_t vx = (opcode & 0x0F00 >> 8);
             const uint8_t vy = (opcode & 0x00F0 >> 4);
             const uint8_t n = (opcode & 0x000F);
-            bool is_overwritten = false;
 
-            const uint16_t offset = (vx * 64) + vy;
+            const uint8_t x = chip8.v[vx];
+            const uint8_t y = chip8.v[vy];
+            assert(x < 64 && y < 32);
 
-            // 매직넘버 대신 쓰는거, 일단 임시로
-            uint8_t display_arr_size = 64 * 32;
+            bool is_collision = false;
+            for (uint8_t byte = 0; byte < n; ++byte) {
+                // Y축 wrapping: 화면 아래를 넘어가면 위로
+                const uint8_t py = (y + byte) % 32;
 
-            uint8_t sprite[display_arr_size];
+                for (uint8_t bit = 0; bit < 8; ++bit) {
+                    // X축 wrapping: 화면 우측을 넘어가면 좌측으로
+                    const uint8_t px = (x + bit) % 64;
 
-            // 뭔가 포인터 잘 쓰면 여기 개선 할 수 있을거 같음.
-            memset(sprite, -1, sizeof(sprite));
-            memcpy(sprite, &chip8.memory[chip8.i], n);
+                    // 버퍼 인덱스 계산: 몇 행 몇 바이트
+                    const uint16_t byte_index = (py * 64 + px) / 8;
+                    const uint8_t bit_mask = 1 << (7 - (px % 8));
 
-            for (int i = 0; i < n; i++) {
-                assert(sprite[i] == 0 || sprite[i] == 1);
-                assert((i+offset) < display_arr_size);
-
-                if (sprite[i] & chip8.display[i + offset] > 0) {
-                    is_overwritten = true;
+                    // 충돌 감지: 기존 픽셀이 켜져 있는지
+                    if (chip8.display[byte_index] & bit_mask) {
+                        is_collision = true;
+                    }
+                    // XOR 그리는 이유는 그냥 요구사항임
+                    chip8.display[byte_index] ^= bit_mask;
                 }
-                chip8.display[i + offset] = sprite[i];
             }
-
-            chip8.v[0xF] = is_overwritten;
+            // VF에 충돌 플래그 기록
+            chip8.v[0xF] = is_collision;
             break;
         }
         case 0xE000: {
@@ -503,7 +511,8 @@ static errcode_t init_chip8(void) {
 
     memcpy(chip8.memory + FONTSET_ADDR, chip8_fontset, sizeof(chip8_fontset));
 
-    const char* rom_path = "/Users/bonditmanager/CLionProjects/c-chip-8/IBM_Logo.ch8";
+    const char *rom_path =
+            "/Users/bonditmanager/CLionProjects/c-chip-8/IBM_Logo.ch8";
     FILE *rom = fopen(rom_path, "rb");
     if (!rom) {
         log_error("ROM 열기 실패: %s", strerror(errno));
@@ -516,7 +525,7 @@ static errcode_t init_chip8(void) {
 
     size_t n = fread(chip8.memory + PROGRAM_START_ADDR, 1, rom_size, rom);
     fclose(rom);
-    if (n != (size_t)rom_size || n > MEMORY_MAX_SIZE) {
+    if (n != (size_t) rom_size || n > MEMORY_MAX_SIZE) {
         log_error("ROM 크기 비정상: %ld", rom_size);
         fclose(rom);
         return ERR_ROM_TOO_LARGE;
@@ -560,5 +569,3 @@ void update_timers(const uint64_t tick_interval) {
         accumulator -= TIMER_TICK_INTERVAL_NS;
     }
 }
-
-
