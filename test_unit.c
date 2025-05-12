@@ -44,15 +44,15 @@ static void test_join_uint8_t(void) {
 
 static void test_Nxkk(void) {
     const uint16_t opcode = 0x3122;
-    const uint8_t vx = (opcode & 0x0F00 >> 8);
+    const uint8_t vx = (opcode & 0x0F00) >> 8;
     const uint8_t nn = (opcode & 0x00FF); // 사실 & 없어도 될거같긴 함.
     printf("vx=%" PRIu8 ", nn=%" PRIu8 "\n", vx, nn);
 }
 
 static void test_NxyN(void) {
     const uint16_t opcode = 0x3122;
-    const uint8_t vx = (opcode & 0x0F00 >> 8);
-    const uint8_t vy = (opcode & 0x00F0 >> 4);
+    const uint8_t vx = (opcode & 0x0F00) >> 8;
+    const uint8_t vy = (opcode & 0x00F0) >> 4;
     printf("vx=%" PRIu8 ", vy=%" PRIu8 "\n", vx, vy);
 }
 

@@ -181,6 +181,10 @@ errcode_t cycle(void) {
             log_info("cycle: %u \t max: %llu \t exec: %llu \t skips: %u",
                      cycle_count, max_cycle_ns, exec_ns, skip_count);
         }
+
+        if (LOG_LEVEL == LOG_TRACE && cycle_count % 600 == 0) {
+            print_display(&chip8);
+        }
     }
 
 exit_cycle:
@@ -215,7 +219,6 @@ static errcode_t process_cycle_work(void) {
                     /* This instruction is only used on the old computers
                      * on which Chip-8 was originally implemented.
                      * It is ignored by modern interpreters. */
-                    log_error("opcode 0x%04x", opcode);
                     assert(false);
                 }
             }
@@ -223,18 +226,14 @@ static errcode_t process_cycle_work(void) {
         }
         case 0x1000: {
             // 1nnn - JP addr
-            struct chip8 c = chip8;
             const u_int16_t nnn = opcode & 0x0FFF;
-            if (0x1228 == opcode) {
-                print_display(&c);
-            }
             chip8.pc = nnn;
             break;
         }
         case 0x2000: {
             // 2nnn - CALL addr
             ++chip8.sp;
-            chip8.stack[chip8.sp] = chip8.memory[chip8.pc];
+            chip8.stack[chip8.sp] = chip8.pc;
 
             const u_int16_t nnn = opcode & 0x0FFF;
             chip8.pc = nnn;
@@ -242,7 +241,7 @@ static errcode_t process_cycle_work(void) {
         }
         case 0x3000: {
             // 3xkk - SE Vx, byte
-            const uint8_t vx = (opcode & 0x0F00 >> 8);
+            const uint8_t vx = (opcode & 0x0F00) >> 8;
             const uint8_t nn = (opcode & 0x00FF); // 사실 & 없어도 될거같긴 함.
             if (chip8.v[vx] == nn) {
                 chip8.pc += 2;
@@ -251,7 +250,7 @@ static errcode_t process_cycle_work(void) {
         }
         case 0x4000: {
             // 4xkk - SNE Vx, byte
-            const uint8_t vx = (opcode & 0x0F00 >> 8);
+            const uint8_t vx = (opcode & 0x0F00) >> 8;
             const uint8_t nn = (opcode & 0x00FF);
             if (chip8.v[vx] != nn) {
                 chip8.pc += 2;
@@ -260,10 +259,10 @@ static errcode_t process_cycle_work(void) {
         }
         case 0x5000: {
             // 5xy0 - SE Vx, Vy
-            assert(opcode & 0x000F == 0);
+            assert((opcode & 0x000F) == 0);
 
-            const uint8_t vx = (opcode & 0x0F00 >> 8);
-            const uint8_t vy = (opcode & 0x00F0 >> 4);
+            const uint8_t vx = (opcode & 0x0F00) >> 8;
+            const uint8_t vy = (opcode & 0x00F0) >> 4;
             if (chip8.v[vx] == chip8.v[vy]) {
                 chip8.pc += 2;
             }
@@ -271,22 +270,22 @@ static errcode_t process_cycle_work(void) {
         }
         case 0x6000: {
             // 6xkk - LD Vx, byte
-            const uint8_t vx = (opcode & 0x0F00 >> 8);
+            const uint8_t vx = (opcode & 0x0F00) >> 8;
             const uint8_t kk = (opcode & 0x00FF);
             chip8.v[vx] = kk;
             break;
         }
         case 0x7000: {
             // 7xkk - ADD Vx, byte
-            const uint8_t vx = (opcode & 0x0F00 >> 8);
+            const uint8_t vx = (opcode & 0x0F00) >> 8;
             const uint8_t kk = (opcode & 0x00FF);
-            chip8.v[vx] = vx + kk;
+            chip8.v[vx] = chip8.v[vx] + kk;
             break;
         }
         case 0x8000: {
             // 8xyn(N = 0-6, E)
-            const uint8_t vx = (opcode & 0x0F00 >> 8);
-            const uint8_t vy = (opcode & 0x00F0 >> 4);
+            const uint8_t vx = (opcode & 0x0F00) >> 8;
+            const uint8_t vy = (opcode & 0x00F0) >> 4;
             const uint8_t n = (opcode & 0x000F);
 
             assert(n == 0 || n == 1 || n == 2 || n == 3 ||
@@ -296,18 +295,22 @@ static errcode_t process_cycle_work(void) {
                 case 0x00: {
                     // 8xy0 - LD Vx, Vy
                     chip8.v[vx] = chip8.v[vy];
+                    break;
                 }
                 case 0x01: {
                     // 8xy1 - OR Vx, Vy
                     chip8.v[vx] = chip8.v[vx] | chip8.v[vy];
+                    break;
                 }
                 case 0x02: {
                     // 8xy2 - AND Vx, Vy
                     chip8.v[vx] = chip8.v[vx] & chip8.v[vy];
+                    break;
                 }
                 case 0x03: {
                     // 8xy3 - XOR Vx, Vy
                     chip8.v[vx] = chip8.v[vx] ^ chip8.v[vy];
+                    break;
                 }
                 case 0x04: {
                     // 8xy4 - ADD Vx, Vy
@@ -320,6 +323,7 @@ static errcode_t process_cycle_work(void) {
                     } else {
                         chip8.v[0xF] = 0;
                     }
+                    break;
                 }
                 case 0x05: {
                     // 8xy5 - SUB Vx, Vy
@@ -328,6 +332,7 @@ static errcode_t process_cycle_work(void) {
                     chip8.v[0xF] = (chip8.v[vx] > chip8.v[vy]);
 
                     chip8.v[vx] = chip8.v[vx] - chip8.v[vy];
+                    break;
                 }
                 case 0x06: {
                     // 8xy6 - SHR Vx {, Vy}
@@ -337,6 +342,7 @@ static errcode_t process_cycle_work(void) {
                     chip8.v[0xF] = chip8.v[vx] & 0x1;
 
                     chip8.v[vx] = chip8.v[vx] >> 1;
+                    break;
                 }
                 case 0x07: {
                     // 8xy7 - SUBN Vx, Vy
@@ -346,6 +352,7 @@ static errcode_t process_cycle_work(void) {
                     chip8.v[0xF] = (chip8.v[vy] > chip8.v[vx]);
 
                     chip8.v[vy] = chip8.v[vy] - chip8.v[vx];
+                    break;
                 }
                 case 0x0E: {
                     // 8xyE - SHL Vx {, Vy}
@@ -355,14 +362,17 @@ static errcode_t process_cycle_work(void) {
                     chip8.v[0xF] = chip8.v[vx] & 0x8000;
 
                     chip8.v[vx] = chip8.v[vx] << 1;
+                    break;
                 }
+                default:
+                    assert(false);
             }
             break;
         }
         case 0x9000: {
             // 9xy0 - SNE Vx, Vy
-            const uint8_t vx = (opcode & 0x0F00 >> 8);
-            const uint8_t vy = (opcode & 0x00F0 >> 4);
+            const uint8_t vx = (opcode & 0x0F00) >> 8;
+            const uint8_t vy = (opcode & 0x00F0) >> 4;
             if (chip8.v[vx] != chip8.v[vy]) {
                 chip8.pc += 2;
             }
@@ -382,15 +392,15 @@ static errcode_t process_cycle_work(void) {
         }
         case 0xC000: {
             // Cxkk - RND Vx, byte
-            const uint8_t vx = (opcode & 0x0F00 >> 8);
+            const uint8_t vx = (opcode & 0x0F00) >> 8;
             const uint8_t kk = (opcode & 0x00FF);
             chip8.v[vx] = (u_int8_t) (rand() % 256) & kk;
             break;
         }
         case 0xD000: {
             // Dxyn - DRW Vx, Vy, nibble: draw n-byte sprite at (Vx, Vy)
-            const uint8_t vx = (opcode & 0x0F00 >> 8);
-            const uint8_t vy = (opcode & 0x00F0 >> 4);
+            const uint8_t vx = (opcode & 0x0F00) >> 8;
+            const uint8_t vy = (opcode & 0x00F0) >> 4;
             const uint8_t n = (opcode & 0x000F);
 
             const uint8_t x = chip8.v[vx];
@@ -399,10 +409,19 @@ static errcode_t process_cycle_work(void) {
 
             bool is_collision = false;
             for (uint8_t byte = 0; byte < n; ++byte) {
+                const uint8_t sprite_byte = chip8.memory[chip8.i + byte];
+
                 // Y축 wrapping: 화면 아래를 넘어가면 위로
                 const uint8_t py = (y + byte) % 32;
 
                 for (uint8_t bit = 0; bit < 8; ++bit) {
+                    const uint8_t sprite_pixel =
+                        (sprite_byte >> (7 - bit)) & 0x1;
+
+                    // 충돌 감지에서 이 값이 0인 경우를 고려하지 않아도 되고 연산이 줄어 효율적
+                    // XOR 연산은 특성 상 값이 0이라면 조기종료 가능
+                    if (!sprite_pixel) continue;
+
                     // X축 wrapping: 화면 우측을 넘어가면 좌측으로
                     const uint8_t px = (x + bit) % 64;
 
@@ -419,19 +438,19 @@ static errcode_t process_cycle_work(void) {
                 }
             }
             // VF에 충돌 플래그 기록
-            chip8.v[0xF] = is_collision;
+            chip8.v[0xF] = is_collision? 1 : 0;
             break;
         }
         case 0xE000: {
-            if (opcode & 0x00FF == 0x009E) {
+            if ((opcode & 0x00FF) == 0x009E) {
                 // Ex9E - SKP Vx
-                const uint8_t vx = (opcode & 0x0F00 >> 8);
+                // const uint8_t vx = (opcode & 0x0F00) >> 8;
                 //TODO: vx 키보드 눌림 체크 & 눌렸으면 PC 증가
                 assert(false);
             }
-            if (opcode & 0x00FF == 0x00A1) {
+            if ((opcode & 0x00FF) == 0x00A1) {
                 // ExA1 - SKNP Vx
-                const uint8_t vx = (opcode & 0x0F00 >> 8);
+                // const uint8_t vx = (opcode & 0x0F00) >> 8;
                 //TODO: vx 키보드 눌림 체크 & 안눌렸으면 PC 증가
                 assert(false);
             }
@@ -503,7 +522,6 @@ static errcode_t process_cycle_work(void) {
     return ERR_NONE;
 }
 
-//TODO: 에러 로그 내용 손보기
 static errcode_t init_chip8(void) {
     memset(&chip8, 0, sizeof(chip8));
 
@@ -515,7 +533,7 @@ static errcode_t init_chip8(void) {
             "/Users/bonditmanager/CLionProjects/c-chip-8/IBM_Logo.ch8";
     FILE *rom = fopen(rom_path, "rb");
     if (!rom) {
-        log_error("ROM 열기 실패: %s", strerror(errno));
+        log_error("Failed to open ROM: %s", strerror(errno));
         return ERR_FILE_NOT_FOUND;
     }
 
@@ -526,7 +544,7 @@ static errcode_t init_chip8(void) {
     size_t n = fread(chip8.memory + PROGRAM_START_ADDR, 1, rom_size, rom);
     fclose(rom);
     if (n != (size_t) rom_size || n > MEMORY_MAX_SIZE) {
-        log_error("ROM 크기 비정상: %ld", rom_size);
+        log_error("Abnormal ROM size: %ld", rom_size);
         fclose(rom);
         return ERR_ROM_TOO_LARGE;
     }
