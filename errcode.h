@@ -10,7 +10,8 @@ typedef enum {
     ERR_UNKNOWN,
     ERR_NO_SUPPORTED_OPCODE,
     ERR_FILE_NOT_FOUND,
-    ERR_ROM_TOO_LARGE
+    ERR_ROM_TOO_LARGE,
+    ERR_THREAD_CREATION_FAILED
 } errcode_t;
 
 #endif // ERRCODE_H

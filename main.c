@@ -6,6 +6,11 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <stdio.h>
+#include <termios.h>
+#include <signal.h>
+#include <pthread.h>
+
 
 #include "log.h"
 #include "errcode.h"
@@ -20,15 +25,31 @@
 #define PROGRAM_START_ADDR 0x200
 #define MEMORY_MAX_SIZE 0x4096
 #define LOG_LEVEL LOG_TRACE
+// 입력 후 INPUT_TICK 값만큼 값을 유지. //TODO: 이름 바꾸기
+#define INPUT_TICK 25 // TICK_INTERVAL_NS(2ms) * 25 = 50ms
 
 /* 전역 상태 변수 */
 static struct {
     bool quit; // 종료 플래그
     errcode_t error_code; // 종료 시 에러 코드
+    // 키패드 상태를 저장하는 배열, 각 키의 잔여 틱 수를 저장
+    uint8_t keypad[16];
 } g_state = {
     .quit = false,
-    .error_code = ERR_NONE
+    .error_code = ERR_NONE,
+    .keypad = {0}
 };
+
+// 필요에 따라 변경 가능
+static const char KEY_MAPPING[16] = {
+    '1', '2', '3', '4', // 0, 1, 2, 3
+    'q', 'w', 'e', 'r', // 4, 5, 6, 7
+    'a', 's', 'd', 'f', // 8, 9, A, B
+    'z', 'x', 'c', 'v' // C, D, E, F
+};
+
+// 뮤텍스 선언 - last_key 접근 시 사용
+static pthread_mutex_t input_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 static struct chip8 chip8;
 
@@ -52,12 +73,28 @@ static const uint8_t chip8_fontset[80] = {
     0xF0, 0x80, 0xF0, 0x80, 0x80 // F
 };
 
+static struct termios orig_term;
+
 /* 함수 선언 */
 errcode_t cycle(void);
+
 static errcode_t process_cycle_work(void);
+
 static errcode_t init_chip8(void);
+
 static uint64_t get_current_time_ns(errcode_t *errcode);
+
 void update_timers(uint64_t tick_interval);
+
+void enable_raw_mode();
+
+void disable_raw_mode();
+
+void *keyboard_thread(void *arg);
+
+void handle_sigint(int sig);
+
+int get_key_index(char key);
 
 /* 에러 처리 및 종료 매크로 */
 #define SET_ERROR_AND_EXIT(err_code) do { \
@@ -73,8 +110,26 @@ int main(void) {
     // 랜덤 시드 설정
     srand(time(NULL));
 
+    // 터미널 설정
+    enable_raw_mode();
+    // 프로그램 종료 시 터미널 설정 복원 콜백함수 등록
+    atexit(disable_raw_mode);
+    // SIGINT 시그널 발생 (주로 ctrl+c) 시 사용자 정의 처리
+    signal(SIGINT, handle_sigint);
+
+    // 키보드 입력 스레드 생성
+    pthread_t kb_thread;
+    if (pthread_create(&kb_thread, NULL, keyboard_thread, NULL) != 0) {
+        log_error("Thread creation failed: %s", strerror(errno));
+        return ERR_THREAD_CREATION_FAILED;
+    }
+
     //chip8 초기화
-    init_chip8();
+    errcode_t init_err = init_chip8();
+    if (init_err != ERR_NONE) {
+        log_error("Abnormal termination: %d", init_err);
+        return init_err;
+    }
 
     // 에러 상태 초기화
     g_state.quit = false;
@@ -163,6 +218,7 @@ errcode_t cycle(void) {
             next_tick += missed * tick_interval;
 
             // 스킵된 사이클은 처리하지 않고 다음 사이클로
+            // TODO: 이거 뺴는게 맞을듯? 보정만 하고 성공 처리는 하긴 해야지
             continue;
         }
 
@@ -185,6 +241,30 @@ errcode_t cycle(void) {
         if (LOG_LEVEL == LOG_TRACE && cycle_count % 600 == 0) {
             print_display(&chip8);
         }
+
+        // 키패드 상태 업데이트: 눌린 키의 타이머 감소
+        pthread_mutex_lock(&input_mutex);
+        for (int i = 0; i < 16; i++) {
+            if (g_state.keypad[i] > 0) {
+                g_state.keypad[i]--;
+            }
+        }
+
+        // TEST: 키패드 값 로깅 (특정 주기로)
+        // if (cycle_count % 100 == 0) {
+        //     char keypad_log[128] = {0};
+        //     int offset = 0;
+        //
+        //     offset += snprintf(keypad_log + offset, sizeof(keypad_log) - offset, "Keypad: [");
+        //     for (int i = 0; i < 16; i++) {
+        //         offset += snprintf(keypad_log + offset, sizeof(keypad_log) - offset,
+        //                           "%d%s", g_state.keypad[i], (i < 15) ? ", " : "");
+        //     }
+        //     offset += snprintf(keypad_log + offset, sizeof(keypad_log) - offset, "]");
+        //
+        //     log_debug("%s", keypad_log);
+        // }
+        pthread_mutex_unlock(&input_mutex);
     }
 
 exit_cycle:
@@ -416,7 +496,7 @@ static errcode_t process_cycle_work(void) {
 
                 for (uint8_t bit = 0; bit < 8; ++bit) {
                     const uint8_t sprite_pixel =
-                        (sprite_byte >> (7 - bit)) & 0x1;
+                            (sprite_byte >> (7 - bit)) & 0x1;
 
                     // 충돌 감지에서 이 값이 0인 경우를 고려하지 않아도 되고 연산이 줄어 효율적
                     // XOR 연산은 특성 상 값이 0이라면 조기종료 가능
@@ -438,7 +518,7 @@ static errcode_t process_cycle_work(void) {
                 }
             }
             // VF에 충돌 플래그 기록
-            chip8.v[0xF] = is_collision? 1 : 0;
+            chip8.v[0xF] = is_collision ? 1 : 0;
             break;
         }
         case 0xE000: {
@@ -447,12 +527,14 @@ static errcode_t process_cycle_work(void) {
                 // const uint8_t vx = (opcode & 0x0F00) >> 8;
                 //TODO: vx 키보드 눌림 체크 & 눌렸으면 PC 증가
                 assert(false);
+                break;
             }
             if ((opcode & 0x00FF) == 0x00A1) {
                 // ExA1 - SKNP Vx
                 // const uint8_t vx = (opcode & 0x0F00) >> 8;
                 //TODO: vx 키보드 눌림 체크 & 안눌렸으면 PC 증가
                 assert(false);
+                break;
             }
             break;
         }
@@ -586,4 +668,65 @@ void update_timers(const uint64_t tick_interval) {
         }
         accumulator -= TIMER_TICK_INTERVAL_NS;
     }
+}
+
+// 키보드 입력 처리 스레드 함수
+void *keyboard_thread(void *arg) {
+    (void) arg;
+    while (!g_state.quit) {
+        char c;
+        // blocking read: 입력이 들어올 때까지 대기
+        if (read(STDIN_FILENO, &c, 1) > 0) {
+            // C가 keypad 값 안에 속하는지 체크, 아니면 스킵
+            const int key_idx = get_key_index(c);
+            if (key_idx >= 0) {
+                pthread_mutex_lock(&input_mutex);
+                // INPUT_TICK 만큼 값을 설정
+                g_state.keypad[key_idx] = INPUT_TICK;
+                log_trace("key pressed: %c (ASCII: %d)", c, (int)c);
+                pthread_mutex_unlock(&input_mutex);
+            }
+        }
+    }
+    return NULL;
+}
+
+// 입력된 키에 해당하는 CHIP-8 키패드 인덱스를 반환
+int get_key_index(char key) {
+    for (int i = 0; i < 16; i++) {
+        if (KEY_MAPPING[i] == key) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+
+void handle_sigint(int sig) {
+    log_debug("here is handle_sigint()");
+    (void) sig;
+    g_state.quit = true;
+}
+
+// 터미널 raw 모드 진입
+void enable_raw_mode() {
+    // 파일 디스크립터 fildes에 연결된 터미널의 현재 속성을 읽어서 orig_term*에 저장
+    tcgetattr(STDIN_FILENO, &orig_term);
+    struct termios raw = orig_term;
+    // ECHO: 입력한 문자를 화면에 에코(반복) 출력
+    // ICANON: 캐논컬(라인 단위) 모드를 사용해 줄바꿈 전까지 입력을 버퍼에 저장
+    // ISIG: Ctrl-C, Ctrl-Z 등 시그널 생성 키를 처리
+    // 위 3가지 flag 비활성화
+    // c_lflag: local flags
+    raw.c_lflag &= ~(ECHO | ICANON | ISIG);
+    // c_cc: control chars
+    raw.c_cc[VMIN] = 0; //VMIN: 비캐논컬 모드에서 read()가 반환하기 위한 최소 바이트 수
+    raw.c_cc[VTIME] = 0; //VTIME: 비캐논컬 모드에서 read()가 타임아웃하기 전 대기 시간
+    // raw 설정을 STDIN_FILENO에 적용 (TCSANOW: 즉시 적용 flag)
+    tcsetattr(STDIN_FILENO, TCSANOW, &raw);
+}
+
+// 터미널 원복
+void disable_raw_mode() {
+    tcsetattr(STDIN_FILENO, TCSANOW, &orig_term);
 }
