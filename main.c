@@ -33,7 +33,7 @@ static struct {
     bool quit; // 종료 플래그
     errcode_t error_code; // 종료 시 에러 코드
     // 키패드 상태를 저장하는 배열, 각 키의 잔여 틱 수를 저장
-    uint8_t keypad[16];
+    volatile uint8_t keypad[16];
 } g_state = {
     .quit = false,
     .error_code = ERR_NONE,
@@ -524,16 +524,28 @@ static errcode_t process_cycle_work(void) {
         case 0xE000: {
             if ((opcode & 0x00FF) == 0x009E) {
                 // Ex9E - SKP Vx
-                // const uint8_t vx = (opcode & 0x0F00) >> 8;
-                //TODO: vx 키보드 눌림 체크 & 눌렸으면 PC 증가
-                assert(false);
+                const uint8_t vx = (opcode & 0x0F00) >> 8;
+
+                pthread_mutex_lock(&input_mutex);
+                bool key_pressed = (g_state.keypad[vx] > 0);
+                pthread_mutex_unlock(&input_mutex);
+
+                if (key_pressed) {
+                    chip8.pc += 2;
+                }
                 break;
             }
             if ((opcode & 0x00FF) == 0x00A1) {
                 // ExA1 - SKNP Vx
-                // const uint8_t vx = (opcode & 0x0F00) >> 8;
-                //TODO: vx 키보드 눌림 체크 & 안눌렸으면 PC 증가
-                assert(false);
+                const uint8_t vx = (opcode & 0x0F00) >> 8;
+
+                pthread_mutex_lock(&input_mutex);
+                bool key_not_pressed = (g_state.keypad[vx] == 0);
+                pthread_mutex_unlock(&input_mutex);
+
+                if (key_not_pressed) {
+                    chip8.pc += 2;
+                }
                 break;
             }
             break;
@@ -548,9 +560,25 @@ static errcode_t process_cycle_work(void) {
                 }
                 case 0x000A: {
                     // Fx0A - LD Vx, K
-                    // TODO: 키 입력을 기다렸다가, 눌린 키 값을 Vx에 저장
-                    //  Blocking 키 대기 로직 필요
-                    assert(false);
+                    const uint8_t vx = (opcode & 0x0F00) >> 8;
+                    u_int8_t pressed_key_idx = (u_int8_t) -1;
+
+                    pthread_mutex_lock(&input_mutex);
+                    // 신규 입력이 존재하는지 확인
+                    for (int i = 0; i < 16; ++i) {
+                        if (g_state.keypad[i] == INPUT_TICK) {
+                            pressed_key_idx = i;
+                            break; // 첫 번째 발견된 키를 사용
+                        }
+                    }
+                    pthread_mutex_unlock(&input_mutex);
+
+                    if (pressed_key_idx == (u_int8_t) -1) {
+                        chip8.v[vx] = pressed_key_idx;
+                    } else {
+                        // 신규 입력이 없으면 이 명령어를 다시 수행하도록 pc값 수정
+                        chip8.pc -= 2;
+                    }
                     break;
                 }
                 case 0x0015: {
