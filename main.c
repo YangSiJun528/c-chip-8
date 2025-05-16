@@ -96,6 +96,12 @@ void handle_sigint(int sig);
 
 int get_key_index(char key);
 
+void print_border(void);
+
+void print_display(const struct chip8 *chip);
+
+void clear_display(void);
+
 /* 에러 처리 및 종료 매크로 */
 #define SET_ERROR_AND_EXIT(err_code) do { \
     g_state.error_code = (err_code); \
@@ -104,7 +110,15 @@ int get_key_index(char key);
 } while(0)
 
 int main(void) {
-    log_set_level(LOG_LEVEL);
+    // 로깅 전용 파일 생성 - 디스플레이 출력을 위해서 분리
+    FILE *logfile = fopen("mylog.txt", "a");
+    if (!logfile) {
+        perror("log file open error");
+        return 1;
+    }
+    log_add_fp(logfile, LOG_LEVEL);
+    //log_set_level(LOG_LEVEL);
+    log_set_level(LOG_INFO);
     log_info("Program started");
 
     // 랜덤 시드 설정
@@ -234,12 +248,8 @@ errcode_t cycle(void) {
         ++cycle_count;
         if (cycle_count % LOG_INTERVAL_CYCLES == 0 || LOG_LEVEL == LOG_TRACE) {
             const uint64_t exec_ns = cycle_end - cycle_start;
-            log_info("cycle: %u \t max: %llu \t exec: %llu \t skips: %u",
+            log_debug("cycle: %u \t max: %llu \t exec: %llu \t skips: %u",
                      cycle_count, max_cycle_ns, exec_ns, skip_count);
-        }
-
-        if (LOG_LEVEL == LOG_TRACE && cycle_count % 600 == 0) {
-            print_display(&chip8);
         }
 
         // 키패드 상태 업데이트: 눌린 키의 타이머 감소
@@ -694,6 +704,9 @@ void update_timers(const uint64_t tick_interval) {
         if (chip8.delay_timer > 0) {
             --chip8.delay_timer;
         }
+        //TODO: 리팩토링좀 하기
+        clear_display();
+        print_display(&chip8);
         accumulator -= TIMER_TICK_INTERVAL_NS;
     }
 }
@@ -757,4 +770,41 @@ void enable_raw_mode() {
 // 터미널 원복
 void disable_raw_mode() {
     tcsetattr(STDIN_FILENO, TCSANOW, &orig_term);
+}
+
+void print_border(void) {
+    putchar('+');
+    for (int i = 0; i < DISPLAY_WIDTH * 2; i++)
+        putchar('-');
+    puts("+");
+}
+
+void print_display(const struct chip8 *chip) {
+    if (!chip) {
+        fputs("Error: Invalid chip8 pointer\n", stderr);
+        return;
+    }
+
+    print_border();
+
+    for (int y = 0; y < DISPLAY_HEIGHT; y++) {
+        putchar('|');
+        int row_offset = y * DISPLAY_WIDTH_BYTES;
+
+        for (int x = 0; x < DISPLAY_WIDTH; x++) {
+            int byte_index = row_offset + (x >> 3);
+            int bit_index = 7 - (x & 7);
+            uint8_t pixel = (chip->display[byte_index] >> bit_index) & 1;
+            printf("%s", pixel ? PIXEL_ON_STR : PIXEL_OFF_STR);
+        }
+
+        puts("|");
+    }
+
+    print_border();
+}
+
+void clear_display(void) {
+    write(STDOUT_FILENO, "\x1b[2J", 4); // 전체 지우기
+    write(STDOUT_FILENO, "\x1b[H", 3); // 커서 홈
 }

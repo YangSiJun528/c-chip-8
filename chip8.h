@@ -7,8 +7,8 @@
 #define DISPLAY_HEIGHT      32
 #define DISPLAY_WIDTH_BYTES   (DISPLAY_WIDTH / 8) // 8bit = 1byte라고 가정
 
-#define PIXEL_ON_STR   "█" // 이거 멀티바이트 문자라 char 배열처럼 다뤄야 함.
-#define PIXEL_OFF_STR  " "
+#define PIXEL_ON_STR   "██" // 글자는 가로로 기니까 크기를 맞추기 위해서 2글자씩 사용
+#define PIXEL_OFF_STR  "  "
 
 struct chip8 {
     uint8_t memory[4096];       // 최대 4kb
@@ -21,37 +21,5 @@ struct chip8 {
     uint8_t sound_timer;        // 사운드
     uint8_t display[DISPLAY_WIDTH_BYTES * DISPLAY_HEIGHT]; // 64 * 32 디스플레이
 };
-
-static void print_border(void) {
-    putchar('+');
-    for (int i = 0; i < DISPLAY_WIDTH; i++)
-        putchar('-');
-    puts("+");
-}
-
-void print_display(const struct chip8 *chip) {
-    if (!chip) {
-        fputs("Error: Invalid chip8 pointer\n", stderr);
-        return;
-    }
-
-    print_border();
-
-    for (int y = 0; y < DISPLAY_HEIGHT; y++) {
-        putchar('|');
-        int row_offset = y * DISPLAY_WIDTH_BYTES;
-
-        for (int x = 0; x < DISPLAY_WIDTH; x++) {
-            int byte_index = row_offset + (x >> 3);
-            int bit_index = 7 - (x & 7);
-            uint8_t pixel = (chip->display[byte_index] >> bit_index) & 1;
-            printf("%s", pixel ? PIXEL_ON_STR : PIXEL_OFF_STR);
-        }
-
-        puts("|");
-    }
-
-    print_border();
-}
 
 #endif // CHIP8_H
