@@ -263,19 +263,19 @@ errcode_t cycle(void) {
         }
 
         // TEST: 키패드 값 로깅 (특정 주기로)
-        // if (cycle_count % 100 == 0) {
-        //     char keypad_log[128] = {0};
-        //     int offset = 0;
-        //
-        //     offset += snprintf(keypad_log + offset, sizeof(keypad_log) - offset, "Keypad: [");
-        //     for (int i = 0; i < 16; i++) {
-        //         offset += snprintf(keypad_log + offset, sizeof(keypad_log) - offset,
-        //                           "%d%s", g_state.keypad[i], (i < 15) ? ", " : "");
-        //     }
-        //     offset += snprintf(keypad_log + offset, sizeof(keypad_log) - offset, "]");
-        //
-        //     log_debug("%s", keypad_log);
-        // }
+        if (cycle_count % 100 == 0) {
+            char keypad_log[128] = {0};
+            int offset = 0;
+
+            offset += snprintf(keypad_log + offset, sizeof(keypad_log) - offset, "Keypad: [");
+            for (int i = 0; i < 16; i++) {
+                offset += snprintf(keypad_log + offset, sizeof(keypad_log) - offset,
+                                  "%d%s", g_state.keypad[i], (i < 15) ? ", " : "");
+            }
+            offset += snprintf(keypad_log + offset, sizeof(keypad_log) - offset, "]");
+
+            log_debug("%s", keypad_log);
+        }
         pthread_mutex_unlock(&input_mutex);
     }
 
@@ -637,8 +637,7 @@ static errcode_t process_cycle_work(void) {
                 default:
                     return ERR_NO_SUPPORTED_OPCODE;
             }
-        default:
-            return ERR_NO_SUPPORTED_OPCODE;
+            break;
         }
     }
     return ERR_NONE;
@@ -652,7 +651,7 @@ static errcode_t init_chip8(void) {
     memcpy(chip8.memory + FONTSET_ADDR, chip8_fontset, sizeof(chip8_fontset));
 
     const char *rom_path =
-            "/Users/bonditmanager/CLionProjects/c-chip-8/IBM_Logo.ch8";
+            "/Users/bonditmanager/CLionProjects/c-chip-8/Pong (1 player).ch8";
     FILE *rom = fopen(rom_path, "rb");
     if (!rom) {
         log_error("Failed to open ROM: %s", strerror(errno));
