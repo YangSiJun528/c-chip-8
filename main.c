@@ -102,6 +102,8 @@ void print_display(const struct chip8 *chip);
 
 void clear_display(void);
 
+void sound_beep(void);
+
 /* 에러 처리 및 종료 매크로 */
 #define SET_ERROR_AND_EXIT(err_code) do { \
     g_state.error_code = (err_code); \
@@ -704,7 +706,8 @@ void update_timers(const uint64_t tick_interval) {
         if (chip8.delay_timer > 0) {
             --chip8.delay_timer;
         }
-        //TODO: 리팩토링좀 하기
+        //TODO: 여기 리팩토링좀 하기
+        sound_beep();
         clear_display();
         print_display(&chip8);
         accumulator -= TIMER_TICK_INTERVAL_NS;
@@ -807,4 +810,9 @@ void print_display(const struct chip8 *chip) {
 void clear_display(void) {
     write(STDOUT_FILENO, "\x1b[2J", 4); // 전체 지우기
     write(STDOUT_FILENO, "\x1b[H", 3); // 커서 홈
+}
+
+void sound_beep(void) {
+    printf("\a"); // 비프 음 내기
+    fflush(stdout); // 버퍼 비우기 - 바로 출력
 }
