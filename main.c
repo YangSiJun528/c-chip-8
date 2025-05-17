@@ -24,9 +24,12 @@
 #define FONT_SIZE 40 // 0x28, 8 byte
 #define PROGRAM_START_ADDR 0x200
 #define MEMORY_MAX_SIZE 0x4096
-#define LOG_LEVEL LOG_TRACE
+#define LOG_LEVEL LOG_DEBUG
 // 입력 후 INPUT_TICK 값만큼 값을 유지. //TODO: 이름 바꾸기
 #define INPUT_TICK 50 // TICK_INTERVAL_NS(2ms) * 50 = 100ms
+
+static const char* project_path =
+    "/Users/bonditmanager/CLionProjects/c-chip-8/";
 
 /* 전역 상태 변수 */
 static struct {
@@ -113,7 +116,15 @@ void sound_beep(void);
 
 int main(void) {
     // 로깅 전용 파일 생성 - 디스플레이 출력을 위해서 분리
-    FILE *logfile = fopen("mylog.txt", "a");
+    const char *log_filename = "mylog.txt";
+
+    char log_path[512];
+
+    size_t total_len = strlen(project_path) + strlen(log_filename);
+    assert(total_len < sizeof(log_path));  // 오버플로우 에러
+    snprintf(log_path, sizeof(log_path), "%s%s", project_path, log_filename);
+
+    FILE *logfile = fopen(log_path, "a");
     if (!logfile) {
         perror("log file open error");
         return 1;
@@ -652,8 +663,15 @@ static errcode_t init_chip8(void) {
 
     memcpy(chip8.memory + FONTSET_ADDR, chip8_fontset, sizeof(chip8_fontset));
 
-    const char *rom_path =
-            "/Users/bonditmanager/CLionProjects/c-chip-8/Pong (1 player).ch8";
+    const char *rom_filename = "Pong (1 player).ch8";
+
+    char rom_path[512];
+
+    const size_t total_len = strlen(project_path) + strlen(rom_filename);
+
+    assert(total_len < sizeof(rom_path));  // 오버플로우 방지
+    snprintf(rom_path, sizeof(rom_path), "%s%s", project_path, rom_filename);
+
     FILE *rom = fopen(rom_path, "rb");
     if (!rom) {
         log_error("Failed to open ROM: %s", strerror(errno));
