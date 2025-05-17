@@ -26,7 +26,7 @@
 #define MEMORY_MAX_SIZE 0x4096
 #define LOG_LEVEL LOG_TRACE
 // 입력 후 INPUT_TICK 값만큼 값을 유지. //TODO: 이름 바꾸기
-#define INPUT_TICK 200 // TICK_INTERVAL_NS(2ms) * 50 = 100ms
+#define INPUT_TICK 50 // TICK_INTERVAL_NS(2ms) * 50 = 100ms
 
 /* 전역 상태 변수 */
 static struct {
@@ -256,11 +256,11 @@ errcode_t cycle(void) {
 
         // 키패드 상태 업데이트: 눌린 키의 타이머 감소
         pthread_mutex_lock(&input_mutex);
-        // for (int i = 0; i < 16; i++) {
-        //     if (g_state.keypad[i] > 0) {
-        //         --g_state.keypad[i];
-        //     }
-        // }
+        for (int i = 0; i < 16; i++) {
+            if (g_state.keypad[i] > 0) {
+                --g_state.keypad[i];
+            }
+        }
 
         // 키패드 값 로깅 (특정 주기로)
         if (cycle_count % 100 == 0) {
@@ -533,26 +533,26 @@ static errcode_t process_cycle_work(void) {
             break;
         }
         case 0xE000: {
+            const uint8_t vx = (opcode & 0x0F00) >> 8;
+            const uint8_t keypad_idx = chip8.v[vx];
+
             if ((opcode & 0x00FF) == 0x009E) {
                 // Ex9E - SKP Vx
-                const uint8_t vx = (opcode & 0x0F00) >> 8;
 
                 pthread_mutex_lock(&input_mutex);
-                bool key_pressed = (g_state.keypad[vx] > 0);
+                bool key_pressed = (g_state.keypad[keypad_idx] > 0);
                 pthread_mutex_unlock(&input_mutex);
 
                 if (key_pressed) {
-                    log_trace("------- [Ex9E - SKP Vx] ----- key_pressed");
                     chip8.pc += 2;
                 }
                 break;
             }
             if ((opcode & 0x00FF) == 0x00A1) {
                 // ExA1 - SKNP Vx
-                const uint8_t vx = (opcode & 0x0F00) >> 8;
 
                 pthread_mutex_lock(&input_mutex);
-                bool key_not_pressed = (g_state.keypad[vx] == 0);
+                bool key_not_pressed = (g_state.keypad[keypad_idx] == 0);
                 pthread_mutex_unlock(&input_mutex);
 
                 if (key_not_pressed) {
@@ -653,7 +653,7 @@ static errcode_t init_chip8(void) {
     memcpy(chip8.memory + FONTSET_ADDR, chip8_fontset, sizeof(chip8_fontset));
 
     const char *rom_path =
-            "/Users/bonditmanager/CLionProjects/c-chip-8/Pong alt.ch8";
+            "/Users/bonditmanager/CLionProjects/c-chip-8/Pong (1 player).ch8";
     FILE *rom = fopen(rom_path, "rb");
     if (!rom) {
         log_error("Failed to open ROM: %s", strerror(errno));
