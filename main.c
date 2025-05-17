@@ -406,15 +406,12 @@ static errcode_t process_cycle_work(void) {
                 }
                 case 0x04: {
                     // 8xy4 - ADD Vx, Vy
-                    chip8.v[vx] = chip8.v[vx] + chip8.v[vy];
+                    uint16_t sum = chip8.v[vx] + chip8.v[vy];
 
                     // set VF = carry
-                    if ((chip8.v[vx] & 0xFF00) > 0) {
-                        chip8.v[0xF] = 1;
-                        chip8.v[vx] = chip8.v[vx] & 0x00FF;
-                    } else {
-                        chip8.v[0xF] = 0;
-                    }
+                    chip8.v[0xF] = (sum > 0xFF) ? 1 : 0;
+
+                    chip8.v[vx] = sum & 0xFF;
                     break;
                 }
                 case 0x05: {
@@ -443,7 +440,7 @@ static errcode_t process_cycle_work(void) {
                     // set VF = NOT borrow
                     chip8.v[0xF] = (chip8.v[vy] > chip8.v[vx]);
 
-                    chip8.v[vy] = chip8.v[vy] - chip8.v[vx];
+                    chip8.v[vx] = chip8.v[vy] - chip8.v[vx];
                     break;
                 }
                 case 0x0E: {
@@ -451,7 +448,7 @@ static errcode_t process_cycle_work(void) {
                     // Shift Left
 
                     // set VF = most significant bit
-                    chip8.v[0xF] = chip8.v[vx] & 0x8000;
+                    chip8.v[0xF] = (chip8.v[vx] & 0x80) >> 7;
 
                     chip8.v[vx] = chip8.v[vx] << 1;
                     break;
@@ -585,7 +582,7 @@ static errcode_t process_cycle_work(void) {
                     }
                     pthread_mutex_unlock(&input_mutex);
 
-                    if (pressed_key_idx == (u_int8_t) -1) {
+                    if (pressed_key_idx != -1) {
                         chip8.v[vx] = pressed_key_idx;
                     } else {
                         // 신규 입력이 없으면 이 명령어를 다시 수행하도록 pc값 수정
@@ -610,14 +607,16 @@ static errcode_t process_cycle_work(void) {
                 }
                 case 0x0029: {
                     // Fx29 - LD F, Vx
-                    chip8.i = FONTSET_ADDR + (chip8.v[vx] * FONT_SIZE);
+
+                    // 8 = byte size
+                    chip8.i = FONTSET_ADDR + (chip8.v[vx] * FONT_SIZE / 8);
                     break;
                 }
                 case 0x0033: {
                     // Fx33 - LD B, Vx
-                    chip8.memory[chip8.i] = vx / 100;
-                    chip8.memory[chip8.i + 1] = (vx % 100) / 10;
-                    chip8.memory[chip8.i + 2] = vx % 10;
+                    chip8.memory[chip8.i] = chip8.v[vx] / 100;
+                    chip8.memory[chip8.i + 1] = (chip8.v[vx] % 100) / 10;
+                    chip8.memory[chip8.i + 2] = chip8.v[vx] % 10;
                     break;
                 }
                 case 0x0055: {
@@ -736,14 +735,23 @@ void *keyboard_thread(void *arg) {
 
 // 입력된 키에 해당하는 CHIP-8 키패드 인덱스를 반환
 int get_key_index(char key) {
+    // 대문자인 경우에만 소문자로 변환 (비트 OR 연산 사용)
+    if (key >= 'A' && key <= 'Z') {
+        key |= 0x20;
+    }
+
     for (int i = 0; i < 16; i++) {
-        if (KEY_MAPPING[i] == key) {
+        char mapped = KEY_MAPPING[i];
+        if (mapped >= 'A' && mapped <= 'Z') {
+            mapped |= 0x20;
+        }
+
+        if (mapped == key) {
             return i;
         }
     }
     return -1;
 }
-
 
 void handle_sigint(int sig) {
     log_debug("here is handle_sigint()");
