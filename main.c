@@ -26,7 +26,7 @@
 #define MEMORY_MAX_SIZE 0x4096
 #define LOG_LEVEL LOG_TRACE
 // 입력 후 INPUT_TICK 값만큼 값을 유지. //TODO: 이름 바꾸기
-#define INPUT_TICK 25 // TICK_INTERVAL_NS(2ms) * 25 = 50ms
+#define INPUT_TICK 200 // TICK_INTERVAL_NS(2ms) * 50 = 100ms
 
 /* 전역 상태 변수 */
 static struct {
@@ -248,7 +248,7 @@ errcode_t cycle(void) {
 
         // 정상적으로 실행된 사이클 카운트
         ++cycle_count;
-        if (cycle_count % LOG_INTERVAL_CYCLES == 0 || LOG_LEVEL == LOG_TRACE) {
+        if (cycle_count % LOG_INTERVAL_CYCLES == 0) {
             const uint64_t exec_ns = cycle_end - cycle_start;
             log_debug("cycle: %u \t max: %llu \t exec: %llu \t skips: %u",
                      cycle_count, max_cycle_ns, exec_ns, skip_count);
@@ -256,13 +256,13 @@ errcode_t cycle(void) {
 
         // 키패드 상태 업데이트: 눌린 키의 타이머 감소
         pthread_mutex_lock(&input_mutex);
-        for (int i = 0; i < 16; i++) {
-            if (g_state.keypad[i] > 0) {
-                g_state.keypad[i]--;
-            }
-        }
+        // for (int i = 0; i < 16; i++) {
+        //     if (g_state.keypad[i] > 0) {
+        //         --g_state.keypad[i];
+        //     }
+        // }
 
-        // TEST: 키패드 값 로깅 (특정 주기로)
+        // 키패드 값 로깅 (특정 주기로)
         if (cycle_count % 100 == 0) {
             char keypad_log[128] = {0};
             int offset = 0;
@@ -381,7 +381,7 @@ static errcode_t process_cycle_work(void) {
             const uint8_t n = (opcode & 0x000F);
 
             assert(n == 0 || n == 1 || n == 2 || n == 3 ||
-                n == 4 || n == 5 || n == 6 || n == 0xE);
+                   n == 4 || n == 5 || n == 6 || n == 7 || n == 0xE);
 
             switch (n) {
                 case 0x00: {
@@ -430,6 +430,7 @@ static errcode_t process_cycle_work(void) {
                     // set VF = least-significant bit
                     chip8.v[0xF] = chip8.v[vx] & 0x1;
 
+                    // Vx를 2로 나눔
                     chip8.v[vx] = chip8.v[vx] >> 1;
                     break;
                 }
@@ -450,6 +451,7 @@ static errcode_t process_cycle_work(void) {
                     // set VF = most significant bit
                     chip8.v[0xF] = (chip8.v[vx] & 0x80) >> 7;
 
+                    // Vx를 2로 곱함
                     chip8.v[vx] = chip8.v[vx] << 1;
                     break;
                 }
@@ -540,6 +542,7 @@ static errcode_t process_cycle_work(void) {
                 pthread_mutex_unlock(&input_mutex);
 
                 if (key_pressed) {
+                    log_trace("------- [Ex9E - SKP Vx] ----- key_pressed");
                     chip8.pc += 2;
                 }
                 break;
@@ -608,7 +611,7 @@ static errcode_t process_cycle_work(void) {
                 case 0x0029: {
                     // Fx29 - LD F, Vx
 
-                    // 8 = byte size
+                    // 각 문자는 5바이트
                     chip8.i = FONTSET_ADDR + (chip8.v[vx] * FONT_SIZE / 8);
                     break;
                 }
@@ -650,7 +653,7 @@ static errcode_t init_chip8(void) {
     memcpy(chip8.memory + FONTSET_ADDR, chip8_fontset, sizeof(chip8_fontset));
 
     const char *rom_path =
-            "/Users/bonditmanager/CLionProjects/c-chip-8/Pong (1 player).ch8";
+            "/Users/bonditmanager/CLionProjects/c-chip-8/Pong alt.ch8";
     FILE *rom = fopen(rom_path, "rb");
     if (!rom) {
         log_error("Failed to open ROM: %s", strerror(errno));
@@ -700,12 +703,12 @@ void update_timers(const uint64_t tick_interval) {
     while (accumulator >= TIMER_TICK_INTERVAL_NS) {
         if (chip8.sound_timer > 0) {
             --chip8.sound_timer;
+            sound_beep();
         }
         if (chip8.delay_timer > 0) {
             --chip8.delay_timer;
         }
         //TODO: 여기 리팩토링좀 하기
-        sound_beep();
         clear_display();
         print_display(&chip8);
         accumulator -= TIMER_TICK_INTERVAL_NS;
@@ -725,7 +728,8 @@ void *keyboard_thread(void *arg) {
                 pthread_mutex_lock(&input_mutex);
                 // INPUT_TICK 만큼 값을 설정
                 g_state.keypad[key_idx] = INPUT_TICK;
-                log_trace("key pressed: %c (ASCII: %d)", c, (int)c);
+                log_trace("key pressed: %c (ASCII: %d), keypad[%d] = %d",
+                        c, (int)c, key_idx, g_state.keypad[key_idx]);
                 pthread_mutex_unlock(&input_mutex);
             }
         }
