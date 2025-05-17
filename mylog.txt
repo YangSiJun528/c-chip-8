@@ -4402,3 +4402,670 @@
 2025-05-17 16:39:29 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 2025-05-17 16:39:29 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 2025-05-17 16:39:29 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:37 INFO  /Users/bonditmanager/CLionProjects/c-chip-8/main.c:135: Program started
+2025-05-17 16:56:37 INFO  /Users/bonditmanager/CLionProjects/c-chip-8/main.c:212: Max cycle time: 3000 ns
+2025-05-17 16:56:37 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 1 ticks (error: 147000 ns). Total skips: 1
+2025-05-17 16:56:37 INFO  /Users/bonditmanager/CLionProjects/c-chip-8/main.c:212: Max cycle time: 4000 ns
+2025-05-17 16:56:37 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:37 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:37 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:37 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:38 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 500 	 max: 4000 	 exec: 0 	 skips: 1
+2025-05-17 16:56:38 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:44 INFO  /Users/bonditmanager/CLionProjects/c-chip-8/main.c:135: Program started
+2025-05-17 16:56:44 INFO  /Users/bonditmanager/CLionProjects/c-chip-8/main.c:212: Max cycle time: 1000 ns
+2025-05-17 16:56:44 INFO  /Users/bonditmanager/CLionProjects/c-chip-8/main.c:212: Max cycle time: 2000 ns
+2025-05-17 16:56:44 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:44 INFO  /Users/bonditmanager/CLionProjects/c-chip-8/main.c:212: Max cycle time: 3000 ns
+2025-05-17 16:56:44 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:44 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:45 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:45 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 500 	 max: 3000 	 exec: 0 	 skips: 0
+2025-05-17 16:56:45 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:45 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:45 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:45 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 1 ticks (error: 1497000 ns). Total skips: 1
+2025-05-17 16:56:45 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 2 ticks (error: 3267000 ns). Total skips: 3
+2025-05-17 16:56:45 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:46 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:46 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 1000 	 max: 3000 	 exec: 0 	 skips: 3
+2025-05-17 16:56:46 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:46 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 1 ticks (error: 451000 ns). Total skips: 4
+2025-05-17 16:56:46 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 4 ticks (error: 6097000 ns). Total skips: 8
+2025-05-17 16:56:46 INFO  /Users/bonditmanager/CLionProjects/c-chip-8/main.c:212: Max cycle time: 24000 ns
+2025-05-17 16:56:46 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:46 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 5 ticks (error: 9408000 ns). Total skips: 13
+2025-05-17 16:56:46 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 3 ticks (error: 4199000 ns). Total skips: 16
+2025-05-17 16:56:46 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:46 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:47 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:47 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 1500 	 max: 24000 	 exec: 0 	 skips: 16
+2025-05-17 16:56:47 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:47 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:47 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:47 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:48 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:48 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 2000 	 max: 24000 	 exec: 0 	 skips: 16
+2025-05-17 16:56:48 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:48 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:48 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 27, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:48 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 26, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:49 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:49 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 2500 	 max: 24000 	 exec: 0 	 skips: 16
+2025-05-17 16:56:49 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:49 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:49 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:49 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:50 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:50 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 3000 	 max: 24000 	 exec: 0 	 skips: 16
+2025-05-17 16:56:50 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:50 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 39, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:50 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 43, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:50 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:51 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:51 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 3500 	 max: 24000 	 exec: 0 	 skips: 16
+2025-05-17 16:56:51 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:51 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:51 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 46, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:51 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:52 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 1 ticks (error: 708000 ns). Total skips: 17
+2025-05-17 16:56:52 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:52 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 4000 	 max: 24000 	 exec: 0 	 skips: 17
+2025-05-17 16:56:52 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:52 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:52 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 44, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:52 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:53 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:53 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 4500 	 max: 24000 	 exec: 0 	 skips: 17
+2025-05-17 16:56:53 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 27, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:53 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:53 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:53 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:54 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:54 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 5000 	 max: 24000 	 exec: 0 	 skips: 17
+2025-05-17 16:56:54 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:54 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:54 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:54 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:55 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:55 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 5500 	 max: 24000 	 exec: 0 	 skips: 17
+2025-05-17 16:56:55 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:55 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:55 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:55 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:56 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:56 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 6000 	 max: 24000 	 exec: 0 	 skips: 17
+2025-05-17 16:56:56 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:56 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:56 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:56 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 33, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:57 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:57 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 6500 	 max: 24000 	 exec: 0 	 skips: 17
+2025-05-17 16:56:57 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:57 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:57 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:57 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:58 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:58 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 7000 	 max: 24000 	 exec: 0 	 skips: 17
+2025-05-17 16:56:58 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:58 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:58 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:58 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:59 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 4 ticks (error: 7855000 ns). Total skips: 21
+2025-05-17 16:56:59 INFO  /Users/bonditmanager/CLionProjects/c-chip-8/main.c:212: Max cycle time: 47000 ns
+2025-05-17 16:56:59 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:59 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 3 ticks (error: 4628000 ns). Total skips: 24
+2025-05-17 16:56:59 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 1 ticks (error: 28000 ns). Total skips: 25
+2025-05-17 16:56:59 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 7500 	 max: 47000 	 exec: 0 	 skips: 25
+2025-05-17 16:56:59 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:59 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:56:59 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:00 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:00 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:00 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 8000 	 max: 47000 	 exec: 0 	 skips: 25
+2025-05-17 16:57:00 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:00 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 39, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:00 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:01 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:01 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:01 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 8500 	 max: 47000 	 exec: 0 	 skips: 25
+2025-05-17 16:57:01 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:01 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:01 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:02 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:02 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:02 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 9000 	 max: 47000 	 exec: 0 	 skips: 25
+2025-05-17 16:57:02 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:02 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:02 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:03 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:03 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:03 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 9500 	 max: 47000 	 exec: 0 	 skips: 25
+2025-05-17 16:57:03 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:03 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:03 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:04 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:04 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:04 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 10000 	 max: 47000 	 exec: 0 	 skips: 25
+2025-05-17 16:57:04 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:04 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 30, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:04 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:04 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 2 ticks (error: 2662000 ns). Total skips: 27
+2025-05-17 16:57:05 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:05 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:05 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 10500 	 max: 47000 	 exec: 0 	 skips: 27
+2025-05-17 16:57:05 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:05 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:05 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:06 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:06 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:06 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 11000 	 max: 47000 	 exec: 0 	 skips: 27
+2025-05-17 16:57:06 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:06 INFO  /Users/bonditmanager/CLionProjects/c-chip-8/main.c:212: Max cycle time: 284000 ns
+2025-05-17 16:57:06 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 5 ticks (error: 9246000 ns). Total skips: 32
+2025-05-17 16:57:06 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:06 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:07 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:07 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:07 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 11500 	 max: 284000 	 exec: 0 	 skips: 32
+2025-05-17 16:57:07 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:07 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:07 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:08 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:08 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:08 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 12000 	 max: 284000 	 exec: 0 	 skips: 32
+2025-05-17 16:57:08 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:08 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:08 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:09 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:09 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:09 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 12500 	 max: 284000 	 exec: 0 	 skips: 32
+2025-05-17 16:57:09 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:09 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:09 INFO  /Users/bonditmanager/CLionProjects/c-chip-8/main.c:212: Max cycle time: 798000 ns
+2025-05-17 16:57:09 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 2 ticks (error: 3543000 ns). Total skips: 34
+2025-05-17 16:57:09 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 4 ticks (error: 7297000 ns). Total skips: 38
+2025-05-17 16:57:09 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 1 ticks (error: 777000 ns). Total skips: 39
+2025-05-17 16:57:09 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:10 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:10 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:10 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 13000 	 max: 798000 	 exec: 0 	 skips: 39
+2025-05-17 16:57:10 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:10 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:10 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:11 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:11 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:11 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 13500 	 max: 798000 	 exec: 0 	 skips: 39
+2025-05-17 16:57:11 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:11 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:11 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:12 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:12 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:12 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 14000 	 max: 798000 	 exec: 1000 	 skips: 39
+2025-05-17 16:57:12 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:12 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:12 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:13 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:13 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 1 ticks (error: 1116000 ns). Total skips: 40
+2025-05-17 16:57:13 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 8 ticks (error: 15596000 ns). Total skips: 48
+2025-05-17 16:57:13 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 4 ticks (error: 7392000 ns). Total skips: 52
+2025-05-17 16:57:13 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 3 ticks (error: 5032000 ns). Total skips: 55
+2025-05-17 16:57:13 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 5 ticks (error: 9406000 ns). Total skips: 60
+2025-05-17 16:57:13 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 1 ticks (error: 399000 ns). Total skips: 61
+2025-05-17 16:57:13 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 1 ticks (error: 1111000 ns). Total skips: 62
+2025-05-17 16:57:13 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 1 ticks (error: 1224000 ns). Total skips: 63
+2025-05-17 16:57:13 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 2 ticks (error: 2103000 ns). Total skips: 65
+2025-05-17 16:57:13 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:13 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 1 ticks (error: 933000 ns). Total skips: 66
+2025-05-17 16:57:13 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 14500 	 max: 798000 	 exec: 0 	 skips: 66
+2025-05-17 16:57:13 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:13 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:13 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:14 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:14 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:14 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 15000 	 max: 798000 	 exec: 0 	 skips: 66
+2025-05-17 16:57:14 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:14 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:14 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:15 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:15 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:15 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 15500 	 max: 798000 	 exec: 0 	 skips: 66
+2025-05-17 16:57:15 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:15 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:15 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:16 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:16 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:16 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 16000 	 max: 798000 	 exec: 0 	 skips: 66
+2025-05-17 16:57:16 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:16 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:16 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:17 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:17 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:17 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 16500 	 max: 798000 	 exec: 0 	 skips: 66
+2025-05-17 16:57:17 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:17 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:17 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:18 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:18 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:18 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 17000 	 max: 798000 	 exec: 0 	 skips: 66
+2025-05-17 16:57:18 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:18 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:18 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 49, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:19 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:19 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:19 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 17500 	 max: 798000 	 exec: 0 	 skips: 66
+2025-05-17 16:57:19 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:19 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:19 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:20 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 12, 0, 0, 0, 0, 0]
+2025-05-17 16:57:20 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:20 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 18000 	 max: 798000 	 exec: 0 	 skips: 66
+2025-05-17 16:57:20 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:20 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:20 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:21 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:21 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:21 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 18500 	 max: 798000 	 exec: 0 	 skips: 66
+2025-05-17 16:57:21 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:21 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:21 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:22 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:22 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:22 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 19000 	 max: 798000 	 exec: 0 	 skips: 66
+2025-05-17 16:57:22 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 13, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:22 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:22 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:23 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 28, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:23 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:23 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 19500 	 max: 798000 	 exec: 0 	 skips: 66
+2025-05-17 16:57:23 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:23 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:23 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:24 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:24 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:24 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 20000 	 max: 798000 	 exec: 0 	 skips: 66
+2025-05-17 16:57:24 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:24 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:24 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 1 ticks (error: 111000 ns). Total skips: 67
+2025-05-17 16:57:24 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:25 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:25 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:25 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 20500 	 max: 798000 	 exec: 0 	 skips: 67
+2025-05-17 16:57:25 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:25 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:25 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:26 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 2 ticks (error: 2198000 ns). Total skips: 69
+2025-05-17 16:57:26 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 33 ticks (error: 64037000 ns). Total skips: 102
+2025-05-17 16:57:26 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 30, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:26 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:26 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 21000 	 max: 798000 	 exec: 0 	 skips: 102
+2025-05-17 16:57:26 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:26 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:27 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:27 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:27 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:27 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 21500 	 max: 798000 	 exec: 0 	 skips: 102
+2025-05-17 16:57:27 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:27 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:28 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:28 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:28 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:28 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 22000 	 max: 798000 	 exec: 0 	 skips: 102
+2025-05-17 16:57:28 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:28 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:29 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:29 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:29 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:29 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 22500 	 max: 798000 	 exec: 0 	 skips: 102
+2025-05-17 16:57:29 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:29 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:30 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:30 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:30 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:30 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 23000 	 max: 798000 	 exec: 0 	 skips: 102
+2025-05-17 16:57:30 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:30 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:31 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:31 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:31 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:31 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 23500 	 max: 798000 	 exec: 0 	 skips: 102
+2025-05-17 16:57:31 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:31 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:32 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:32 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:32 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:32 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 24000 	 max: 798000 	 exec: 0 	 skips: 102
+2025-05-17 16:57:32 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:32 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 36, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:33 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:33 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 47, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:33 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:33 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 24500 	 max: 798000 	 exec: 0 	 skips: 102
+2025-05-17 16:57:33 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:33 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:34 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:34 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 29, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:34 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:34 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 25000 	 max: 798000 	 exec: 0 	 skips: 102
+2025-05-17 16:57:34 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:34 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:35 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:35 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 25, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:35 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:35 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 25500 	 max: 798000 	 exec: 0 	 skips: 102
+2025-05-17 16:57:35 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:35 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:36 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:36 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:36 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:36 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 26000 	 max: 798000 	 exec: 0 	 skips: 102
+2025-05-17 16:57:36 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:36 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:37 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 17, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:37 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:37 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:37 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 26500 	 max: 798000 	 exec: 0 	 skips: 102
+2025-05-17 16:57:37 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:37 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 26, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:38 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 37, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:38 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:38 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:38 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 27000 	 max: 798000 	 exec: 0 	 skips: 102
+2025-05-17 16:57:38 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:38 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:39 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:39 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:39 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:39 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 27500 	 max: 798000 	 exec: 0 	 skips: 102
+2025-05-17 16:57:39 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:39 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:40 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:40 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:40 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:40 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 28000 	 max: 798000 	 exec: 0 	 skips: 102
+2025-05-17 16:57:40 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 26, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:40 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 30, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:41 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:41 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 36, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:41 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:41 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 28500 	 max: 798000 	 exec: 0 	 skips: 102
+2025-05-17 16:57:41 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:41 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:42 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 29, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:42 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:42 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 38, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:42 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 1 ticks (error: 63000 ns). Total skips: 103
+2025-05-17 16:57:42 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 29000 	 max: 798000 	 exec: 0 	 skips: 103
+2025-05-17 16:57:42 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:42 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:43 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 26, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:43 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:43 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:43 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 29500 	 max: 798000 	 exec: 0 	 skips: 103
+2025-05-17 16:57:43 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 40, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:43 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:44 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 48, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:44 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 32, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:44 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:44 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 30000 	 max: 798000 	 exec: 0 	 skips: 103
+2025-05-17 16:57:44 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:44 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:45 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:45 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:45 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:45 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 30500 	 max: 798000 	 exec: 0 	 skips: 103
+2025-05-17 16:57:45 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:45 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:46 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:46 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:46 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:46 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 31000 	 max: 798000 	 exec: 0 	 skips: 103
+2025-05-17 16:57:46 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:46 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:47 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:47 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:47 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:47 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 31500 	 max: 798000 	 exec: 0 	 skips: 103
+2025-05-17 16:57:47 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:47 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:47 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 1 ticks (error: 113000 ns). Total skips: 104
+2025-05-17 16:57:48 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:48 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:48 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 41, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:48 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 32000 	 max: 798000 	 exec: 0 	 skips: 104
+2025-05-17 16:57:48 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:48 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:49 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:49 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:49 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:49 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 32500 	 max: 798000 	 exec: 0 	 skips: 104
+2025-05-17 16:57:49 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:49 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:50 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:50 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:50 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:50 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 33000 	 max: 798000 	 exec: 0 	 skips: 104
+2025-05-17 16:57:50 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:50 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 9, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:51 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:51 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:51 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:51 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 2 ticks (error: 2464000 ns). Total skips: 106
+2025-05-17 16:57:51 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 33500 	 max: 798000 	 exec: 0 	 skips: 106
+2025-05-17 16:57:51 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:51 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 1 ticks (error: 997000 ns). Total skips: 107
+2025-05-17 16:57:51 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 11, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:52 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:52 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:52 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:52 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 34000 	 max: 798000 	 exec: 0 	 skips: 107
+2025-05-17 16:57:52 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:52 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 23, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:53 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:53 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:53 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:53 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 34500 	 max: 798000 	 exec: 0 	 skips: 107
+2025-05-17 16:57:53 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:53 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:54 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 31, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:54 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:54 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:54 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 35000 	 max: 798000 	 exec: 0 	 skips: 107
+2025-05-17 16:57:54 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:54 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 19, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:55 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:55 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:55 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:55 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 35500 	 max: 798000 	 exec: 0 	 skips: 107
+2025-05-17 16:57:55 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 45, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:55 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 37, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:56 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 38, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:56 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:56 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:56 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 36000 	 max: 798000 	 exec: 0 	 skips: 107
+2025-05-17 16:57:56 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:56 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:57 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:57 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:57 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:57 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 36500 	 max: 798000 	 exec: 0 	 skips: 107
+2025-05-17 16:57:57 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 43, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:57 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:58 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:58 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:58 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:58 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 37000 	 max: 798000 	 exec: 0 	 skips: 107
+2025-05-17 16:57:58 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:58 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:59 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:59 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:59 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:59 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 37500 	 max: 798000 	 exec: 0 	 skips: 107
+2025-05-17 16:57:59 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:57:59 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:00 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:00 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:00 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:00 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 38000 	 max: 798000 	 exec: 0 	 skips: 107
+2025-05-17 16:58:00 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:00 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:01 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 36, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:01 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:01 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:01 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 38500 	 max: 798000 	 exec: 0 	 skips: 107
+2025-05-17 16:58:01 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:01 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:02 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:02 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:02 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:02 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 39000 	 max: 798000 	 exec: 0 	 skips: 107
+2025-05-17 16:58:02 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:02 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:03 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:03 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:03 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:03 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 39500 	 max: 798000 	 exec: 0 	 skips: 107
+2025-05-17 16:58:03 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:03 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:04 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:04 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:04 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:04 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 40000 	 max: 798000 	 exec: 0 	 skips: 107
+2025-05-17 16:58:04 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:04 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:05 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:05 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:05 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 26, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:05 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 40500 	 max: 798000 	 exec: 0 	 skips: 107
+2025-05-17 16:58:05 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:05 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 35, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:06 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:06 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 47, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:06 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:06 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 41000 	 max: 798000 	 exec: 0 	 skips: 107
+2025-05-17 16:58:06 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:06 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:07 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:07 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:07 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:07 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 41500 	 max: 798000 	 exec: 0 	 skips: 107
+2025-05-17 16:58:07 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:07 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:08 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:08 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:08 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:08 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 42000 	 max: 798000 	 exec: 1000 	 skips: 107
+2025-05-17 16:58:08 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:08 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:09 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:09 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:09 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:09 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 42500 	 max: 798000 	 exec: 0 	 skips: 107
+2025-05-17 16:58:09 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:09 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:10 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:10 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:10 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:10 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 3 ticks (error: 4520000 ns). Total skips: 110
+2025-05-17 16:58:10 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 43000 	 max: 798000 	 exec: 0 	 skips: 110
+2025-05-17 16:58:10 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:10 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:11 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:11 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:11 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:11 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 43500 	 max: 798000 	 exec: 0 	 skips: 110
+2025-05-17 16:58:11 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:11 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:58:12 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:06 INFO  /Users/bonditmanager/CLionProjects/c-chip-8/main.c:135: Program started
+2025-05-17 16:59:06 INFO  /Users/bonditmanager/CLionProjects/c-chip-8/main.c:212: Max cycle time: 1000 ns
+2025-05-17 16:59:06 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:06 INFO  /Users/bonditmanager/CLionProjects/c-chip-8/main.c:212: Max cycle time: 3000 ns
+2025-05-17 16:59:07 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:07 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:07 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:07 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 500 	 max: 3000 	 exec: 0 	 skips: 0
+2025-05-17 16:59:07 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:07 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:08 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:08 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:08 INFO  /Users/bonditmanager/CLionProjects/c-chip-8/main.c:212: Max cycle time: 4000 ns
+2025-05-17 16:59:08 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:08 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 1000 	 max: 4000 	 exec: 0 	 skips: 0
+2025-05-17 16:59:08 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:08 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:09 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:09 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:09 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:09 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 1500 	 max: 4000 	 exec: 0 	 skips: 0
+2025-05-17 16:59:09 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:09 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:10 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:10 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:10 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:10 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 2000 	 max: 4000 	 exec: 0 	 skips: 0
+2025-05-17 16:59:10 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:10 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:11 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:11 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:11 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0]
+2025-05-17 16:59:11 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 2500 	 max: 4000 	 exec: 0 	 skips: 0
+2025-05-17 16:59:11 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:11 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:12 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 18, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:12 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 2 ticks (error: 2096000 ns). Total skips: 2
+2025-05-17 16:59:12 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:12 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 27, 28, 8, 0, 0, 0, 0]
+2025-05-17 16:59:12 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 3000 	 max: 4000 	 exec: 0 	 skips: 2
+2025-05-17 16:59:12 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 5, 0]
+2025-05-17 16:59:12 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 23, 0, 7]
+2025-05-17 16:59:13 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:13 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 26, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:13 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:13 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 1 ticks (error: 1024000 ns). Total skips: 3
+2025-05-17 16:59:13 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 3500 	 max: 4000 	 exec: 0 	 skips: 3
+2025-05-17 16:59:13 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:13 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:14 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:14 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 7, 0, 0, 0, 45, 32, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:14 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:14 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 4000 	 max: 4000 	 exec: 0 	 skips: 3
+2025-05-17 16:59:14 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:14 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:15 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:15 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:15 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 4 ticks (error: 6951000 ns). Total skips: 7
+2025-05-17 16:59:15 ERROR /Users/bonditmanager/CLionProjects/c-chip-8/main.c:242: Missed 5 ticks (error: 9448000 ns). Total skips: 12
+2025-05-17 16:59:15 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:15 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 4500 	 max: 4000 	 exec: 0 	 skips: 12
+2025-05-17 16:59:15 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 11, 39, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:15 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:16 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 15, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:16 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:16 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:16 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 5000 	 max: 4000 	 exec: 0 	 skips: 12
+2025-05-17 16:59:16 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:16 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 37, 0]
+2025-05-17 16:59:17 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:17 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 34, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:17 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 35, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:17 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 5500 	 max: 4000 	 exec: 0 	 skips: 12
+2025-05-17 16:59:17 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 10, 36, 0, 0, 0, 0]
+2025-05-17 16:59:17 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:18 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:18 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:18 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:18 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 6000 	 max: 4000 	 exec: 0 	 skips: 12
+2025-05-17 16:59:18 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:18 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:19 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:19 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:19 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:19 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 6500 	 max: 4000 	 exec: 0 	 skips: 12
+2025-05-17 16:59:19 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:19 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:20 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:20 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:20 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+2025-05-17 16:59:20 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:265: cycle: 7000 	 max: 4000 	 exec: 0 	 skips: 12
+2025-05-17 16:59:20 DEBUG /Users/bonditmanager/CLionProjects/c-chip-8/main.c:288: Keypad: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
