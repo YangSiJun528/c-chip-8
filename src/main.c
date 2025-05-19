@@ -28,8 +28,8 @@
 // 입력 후 INPUT_TICK 값만큼 값을 유지. //TODO: 이름 바꾸기
 #define INPUT_TICK 50 // TICK_INTERVAL_NS(2ms) * 50 = 100ms
 
-static const char* project_path =
-    "/Users/bonditmanager/CLionProjects/c-chip-8/";
+#define PROJECT_PATH "/Users/bonditmanager/CLionProjects/c-chip-8/"
+#define ROM_PATH PROJECT_PATH "roms/"
 
 /* 전역 상태 변수 */
 static struct {
@@ -120,9 +120,9 @@ int main(void) {
 
     char log_path[512];
 
-    size_t total_len = strlen(project_path) + strlen(log_filename);
-    assert(total_len < sizeof(log_path));  // 오버플로우 에러
-    snprintf(log_path, sizeof(log_path), "%s%s", project_path, log_filename);
+    const size_t total_len = strlen(PROJECT_PATH) + strlen(log_filename);
+    assert(total_len < sizeof(log_path)); // 오버플로우 에러
+    snprintf(log_path, sizeof(log_path), "%s%s", PROJECT_PATH, log_filename);
 
     FILE *logfile = fopen(log_path, "a");
     if (!logfile) {
@@ -262,7 +262,7 @@ errcode_t cycle(void) {
         if (cycle_count % LOG_INTERVAL_CYCLES == 0) {
             const uint64_t exec_ns = cycle_end - cycle_start;
             log_debug("cycle: %u \t max: %llu \t exec: %llu \t skips: %u",
-                     cycle_count, max_cycle_ns, exec_ns, skip_count);
+                      cycle_count, max_cycle_ns, exec_ns, skip_count);
         }
 
         // 키패드 상태 업데이트: 눌린 키의 타이머 감소
@@ -278,12 +278,16 @@ errcode_t cycle(void) {
             char keypad_log[128] = {0};
             int offset = 0;
 
-            offset += snprintf(keypad_log + offset, sizeof(keypad_log) - offset, "Keypad: [");
+            offset += snprintf(keypad_log + offset,
+                               sizeof(keypad_log) - offset, "Keypad: [");
             for (int i = 0; i < 16; i++) {
-                offset += snprintf(keypad_log + offset, sizeof(keypad_log) - offset,
-                                  "%d%s", g_state.keypad[i], (i < 15) ? ", " : "");
+                offset += snprintf(keypad_log + offset,
+                                   sizeof(keypad_log) - offset,
+                                   "%d%s", g_state.keypad[i],
+                                   (i < 15) ? ", " : "");
             }
-            offset += snprintf(keypad_log + offset, sizeof(keypad_log) - offset, "]");
+            offset += snprintf(keypad_log + offset,
+                               sizeof(keypad_log) - offset, "]");
 
             log_debug("%s", keypad_log);
         }
@@ -392,7 +396,7 @@ static errcode_t process_cycle_work(void) {
             const uint8_t n = (opcode & 0x000F);
 
             assert(n == 0 || n == 1 || n == 2 || n == 3 ||
-                   n == 4 || n == 5 || n == 6 || n == 7 || n == 0xE);
+                n == 4 || n == 5 || n == 6 || n == 7 || n == 0xE);
 
             switch (n) {
                 case 0x00: {
@@ -665,12 +669,22 @@ static errcode_t init_chip8(void) {
 
     const char *rom_filename = "Tetris [Fran Dachille, 1991].ch8";
 
-    char rom_path[512];
+    const int DEST_SIZE = 512;
+    char rom_path[DEST_SIZE];
 
-    const size_t total_len = strlen(project_path) + strlen(rom_filename);
+    const size_t len_path = strlen(ROM_PATH);
+    const size_t len_file = strlen(rom_filename);
+    const size_t total_len = len_path + len_file;  // 널 문자는 아래에서 직접 추가
 
-    assert(total_len < sizeof(rom_path));  // 오버플로우 방지
-    snprintf(rom_path, sizeof(rom_path), "%s%s", project_path, rom_filename);
+    // 버퍼 오버플로우 방지: 널 문자 포함해서도 DEST_SIZE 이하인지 확인
+    assert(total_len + 1 <= DEST_SIZE);
+
+    // 1) ROM_PATH 복사 (널 문자는 아직 붙이지 않음)
+    strncpy(rom_path, ROM_PATH, DEST_SIZE - 1);
+    // 2) rom_filename 복사 (남은 공간에)
+    strncpy(rom_path + len_path, rom_filename, DEST_SIZE - len_path - 1);
+    // 3) 마지막 바이트에 널 명시
+    rom_path[DEST_SIZE - 1] = '\0';
 
     FILE *rom = fopen(rom_path, "rb");
     if (!rom) {
@@ -747,7 +761,7 @@ void *keyboard_thread(void *arg) {
                 // INPUT_TICK 만큼 값을 설정
                 g_state.keypad[key_idx] = INPUT_TICK;
                 log_trace("key pressed: %c (ASCII: %d), keypad[%d] = %d",
-                        c, (int)c, key_idx, g_state.keypad[key_idx]);
+                          c, (int)c, key_idx, g_state.keypad[key_idx]);
                 pthread_mutex_unlock(&input_mutex);
             }
         }

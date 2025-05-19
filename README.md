@@ -118,7 +118,7 @@ https://en.cppreference.com/w/c/chrono/clock 여기에서
 `clock_gettime(CLOCK_MONOTONIC, &s_timespec);`을 사용하면 될 듯?  
 CLOCK_MONOTONIC이 단조 시간을 나타내는 ID임.
 
-GPT 사용해서 [test_tick_cycle](./test_tick_cycle.c) 코드를 작성함.
+GPT 사용해서 [test_tick_cycle](demo_c_files/test_tick_cycle.c) 코드를 작성함.
 이거 맞는지 체크하고, 직접 구현해보면 될 듯?
 
 다음 틱 예약(next_tick) 누적으로 내부 시뮬레이션 시간은
