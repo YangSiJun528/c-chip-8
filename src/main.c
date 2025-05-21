@@ -14,22 +14,8 @@
 
 #include "log.h"
 #include "errcode.h"
-#include "chip8.h"
-
-#define NANOSECONDS_PER_SECOND 1000000000UL
-#define TICK_INTERVAL_NS       2000000UL
-#define LOG_INTERVAL_CYCLES    500
-#define TIMER_TICK_INTERVAL_NS (16666667L) // 16.666667ms in nanoseconds
-#define FONTSET_ADDR 0x50 // TODO: 이름 Base addr이 더 나은듯?
-#define FONT_SIZE 40 // 0x28, 8 byte
-#define PROGRAM_START_ADDR 0x200
-#define MEMORY_MAX_SIZE 0x4096
-#define LOG_LEVEL LOG_DEBUG
-// 입력 후 INPUT_TICK 값만큼 값을 유지. //TODO: 이름 바꾸기
-#define INPUT_TICK 50 // TICK_INTERVAL_NS(2ms) * 50 = 100ms
-
-#define PROJECT_PATH "/Users/bonditmanager/CLionProjects/c-chip-8/"
-#define ROM_PATH PROJECT_PATH "roms/"
+#include "chip8_struct.h"
+#include "chip8_config.h"
 
 /* 전역 상태 변수 */
 static struct {
@@ -77,31 +63,18 @@ static struct termios orig_term;
 
 /* 함수 선언 */
 errcode_t cycle(void);
-
 static errcode_t process_cycle_work(void);
-
 static errcode_t init_chip8(void);
-
 static uint64_t get_current_time_ns(errcode_t *errcode);
-
 void update_timers(uint64_t tick_interval);
-
 void enable_raw_mode();
-
 void disable_raw_mode();
-
 void *keyboard_thread(void *arg);
-
 void handle_sigint(int sig);
-
 int get_key_index(char key);
-
 void print_border(void);
-
 void print_display(const struct chip8 *chip);
-
 void clear_display(void);
-
 void sound_beep(void);
 
 /* 에러 처리 및 종료 매크로 */
