@@ -35,12 +35,9 @@
 static struct {
     bool quit; // 종료 플래그
     errcode_t error_code; // 종료 시 에러 코드
-    // 키패드 상태를 저장하는 배열, 각 키의 잔여 틱 수를 저장
-    volatile uint8_t keypad[16];
 } g_state = {
     .quit = false,
-    .error_code = ERR_NONE,
-    .keypad = {0}
+    .error_code = ERR_NONE
 };
 
 // 필요에 따라 변경 가능
@@ -268,8 +265,8 @@ errcode_t cycle(void) {
         // 키패드 상태 업데이트: 눌린 키의 타이머 감소
         pthread_mutex_lock(&input_mutex);
         for (int i = 0; i < 16; i++) {
-            if (g_state.keypad[i] > 0) {
-                --g_state.keypad[i];
+            if (chip8.keypad[i] > 0) {
+                --chip8.keypad[i];
             }
         }
 
@@ -283,7 +280,7 @@ errcode_t cycle(void) {
             for (int i = 0; i < 16; i++) {
                 offset += snprintf(keypad_log + offset,
                                    sizeof(keypad_log) - offset,
-                                   "%d%s", g_state.keypad[i],
+                                   "%d%s", chip8.keypad[i],
                                    (i < 15) ? ", " : "");
             }
             offset += snprintf(keypad_log + offset,
@@ -555,7 +552,7 @@ static errcode_t process_cycle_work(void) {
                 // Ex9E - SKP Vx
 
                 pthread_mutex_lock(&input_mutex);
-                bool key_pressed = (g_state.keypad[keypad_idx] > 0);
+                bool key_pressed = (chip8.keypad[keypad_idx] > 0);
                 pthread_mutex_unlock(&input_mutex);
 
                 if (key_pressed) {
@@ -567,7 +564,7 @@ static errcode_t process_cycle_work(void) {
                 // ExA1 - SKNP Vx
 
                 pthread_mutex_lock(&input_mutex);
-                bool key_not_pressed = (g_state.keypad[keypad_idx] == 0);
+                bool key_not_pressed = (chip8.keypad[keypad_idx] == 0);
                 pthread_mutex_unlock(&input_mutex);
 
                 if (key_not_pressed) {
@@ -593,7 +590,7 @@ static errcode_t process_cycle_work(void) {
                     pthread_mutex_lock(&input_mutex);
                     // 신규 입력이 존재하는지 확인
                     for (int i = 0; i < 16; ++i) {
-                        if (g_state.keypad[i] == INPUT_TICK) {
+                        if (chip8.keypad[i] == INPUT_TICK) {
                             pressed_key_idx = i;
                             break; // 첫 번째 발견된 키를 사용
                         }
@@ -667,7 +664,7 @@ static errcode_t init_chip8(void) {
 
     memcpy(chip8.memory + FONTSET_ADDR, chip8_fontset, sizeof(chip8_fontset));
 
-    const char *rom_filename = "Tetris [Fran Dachille, 1991].ch8";
+    const char *rom_filename = "Pong (1 player).ch8";
 
     const int DEST_SIZE = 512;
     char rom_path[DEST_SIZE];
@@ -759,9 +756,9 @@ void *keyboard_thread(void *arg) {
             if (key_idx >= 0) {
                 pthread_mutex_lock(&input_mutex);
                 // INPUT_TICK 만큼 값을 설정
-                g_state.keypad[key_idx] = INPUT_TICK;
+                chip8.keypad[key_idx] = INPUT_TICK;
                 log_trace("key pressed: %c (ASCII: %d), keypad[%d] = %d",
-                          c, (int)c, key_idx, g_state.keypad[key_idx]);
+                          c, (int)c, key_idx, chip8.keypad[key_idx]);
                 pthread_mutex_unlock(&input_mutex);
             }
         }

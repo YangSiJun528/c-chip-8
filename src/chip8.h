@@ -20,6 +20,7 @@ struct chip8 {
     uint8_t delay_timer;        // 딜레이
     uint8_t sound_timer;        // 사운드
     uint8_t display[DISPLAY_WIDTH_BYTES * DISPLAY_HEIGHT]; // 64 * 32 디스플레이
+    volatile uint8_t keypad[16]; // 키패드 상태를 저장하는 배열, 각 키의 잔여 틱 수를 저장
 };
 
 #endif // CHIP8_H
