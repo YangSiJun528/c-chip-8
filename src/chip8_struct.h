@@ -17,4 +17,6 @@ struct chip8 {
     volatile uint8_t keypad[NUM_KEYS]; // 키패드 상태를 저장하는 배열, 각 키의 잔여 틱 수를 저장
 };
 
+typedef struct chip8 chip8_t;
+
 #endif // CHIP8_STRUCT_H

@@ -16,6 +16,7 @@
 #include "errcode.h"
 #include "chip8_struct.h"
 #include "chip8_config.h"
+#include "input.h"
 
 /* 전역 상태 변수 */
 static struct {
@@ -128,6 +129,8 @@ int main(void) {
         return init_err;
     }
 
+    input_initialize(); //TODO: 에러코드 반환함.
+
     // 에러 상태 초기화
     g_state.quit = false;
     g_state.error_code = ERR_NONE;
@@ -236,35 +239,11 @@ errcode_t cycle(void) {
         }
 
         // 키패드 상태 업데이트: 눌린 키의 타이머 감소
-        pthread_mutex_lock(&input_mutex);
-        for (int i = 0; i < 16; i++) {
-            if (chip8.keypad[i] > 0) {
-                --chip8.keypad[i];
-            }
-        }
-
-        // 키패드 값 로깅 (특정 주기로)
-        if (cycle_count % 100 == 0) {
-            char keypad_log[128] = {0};
-            int offset = 0;
-
-            offset += snprintf(keypad_log + offset,
-                               sizeof(keypad_log) - offset, "Keypad: [");
-            for (int i = 0; i < 16; i++) {
-                offset += snprintf(keypad_log + offset,
-                                   sizeof(keypad_log) - offset,
-                                   "%d%s", chip8.keypad[i],
-                                   (i < 15) ? ", " : "");
-            }
-            offset += snprintf(keypad_log + offset,
-                               sizeof(keypad_log) - offset, "]");
-
-            log_debug("%s", keypad_log);
-        }
-        pthread_mutex_unlock(&input_mutex);
+        input_process_keys(&chip8);
     }
 
 exit_cycle:
+    input_shutdown();
     return g_state.error_code;
 }
 
@@ -522,28 +501,14 @@ static errcode_t process_cycle_work(void) {
             const uint8_t keypad_idx = chip8.v[vx];
 
             if ((opcode & 0x00FF) == 0x009E) {
-                // Ex9E - SKP Vx
-
-                pthread_mutex_lock(&input_mutex);
-                bool key_pressed = (chip8.keypad[keypad_idx] > 0);
-                pthread_mutex_unlock(&input_mutex);
-
-                if (key_pressed) {
+                if (input_is_key_pressed(&chip8, keypad_idx)) {
                     chip8.pc += 2;
                 }
-                break;
             }
             if ((opcode & 0x00FF) == 0x00A1) {
-                // ExA1 - SKNP Vx
-
-                pthread_mutex_lock(&input_mutex);
-                bool key_not_pressed = (chip8.keypad[keypad_idx] == 0);
-                pthread_mutex_unlock(&input_mutex);
-
-                if (key_not_pressed) {
+                if (input_is_key_not_pressed(&chip8, keypad_idx)) {
                     chip8.pc += 2;
                 }
-                break;
             }
             break;
         }
@@ -558,17 +523,8 @@ static errcode_t process_cycle_work(void) {
                 case 0x000A: {
                     // Fx0A - LD Vx, K
                     const uint8_t vx = (opcode & 0x0F00) >> 8;
-                    u_int8_t pressed_key_idx = (u_int8_t) -1;
-
-                    pthread_mutex_lock(&input_mutex);
-                    // 신규 입력이 존재하는지 확인
-                    for (int i = 0; i < 16; ++i) {
-                        if (chip8.keypad[i] == INPUT_TICK) {
-                            pressed_key_idx = i;
-                            break; // 첫 번째 발견된 키를 사용
-                        }
-                    }
-                    pthread_mutex_unlock(&input_mutex);
+                    u_int8_t pressed_key_idx =
+                        input_get_newly_pressed_key(&chip8);
 
                     if (pressed_key_idx != -1) {
                         chip8.v[vx] = pressed_key_idx;
@@ -722,17 +678,15 @@ void *keyboard_thread(void *arg) {
     (void) arg;
     while (!g_state.quit) {
         char c;
-        // blocking read: 입력이 들어올 때까지 대기
-        if (read(STDIN_FILENO, &c, 1) > 0) {
+        //TODO: ssize_t기 뭐지
+        const ssize_t bytes_read = read(STDIN_FILENO, &c, 1);
+        if (bytes_read > 0) {
             // C가 keypad 값 안에 속하는지 체크, 아니면 스킵
             const int key_idx = get_key_index(c);
             if (key_idx >= 0) {
-                pthread_mutex_lock(&input_mutex);
-                // INPUT_TICK 만큼 값을 설정
-                chip8.keypad[key_idx] = INPUT_TICK;
+                input_set_key_down(&chip8, key_idx);
                 log_trace("key pressed: %c (ASCII: %d), keypad[%d] = %d",
                           c, (int)c, key_idx, chip8.keypad[key_idx]);
-                pthread_mutex_unlock(&input_mutex);
             }
         }
     }
