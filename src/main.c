@@ -7,9 +7,6 @@
 #include <string.h>
 #include <unistd.h>
 #include <stdio.h>
-#include <termios.h>
-#include <signal.h>
-#include <pthread.h>
 
 
 #include "log.h"
@@ -18,6 +15,7 @@
 #include "chip8_config.h"
 #include "input.h"
 #include "output.h"
+#include "terminal_io.h"
 
 /* 전역 상태 변수 */
 static struct {
@@ -58,23 +56,12 @@ static const uint8_t chip8_fontset[80] = {
     0xF0, 0x80, 0xF0, 0x80, 0x80 // F
 };
 
-static struct termios orig_term;
-
 /* 함수 선언 */
 errcode_t cycle(void);
 static errcode_t process_cycle_work(void);
 static errcode_t init_chip8(void);
 static uint64_t get_current_time_ns(errcode_t *errcode);
 void update_timers(uint64_t tick_interval);
-void enable_raw_mode();
-void disable_raw_mode();
-void *keyboard_thread(void *arg);
-void handle_sigint(int sig);
-int get_key_index(char key);
-void print_border(void);
-void print_display(const struct chip8 *chip);
-void clear_display(void);
-void sound_beep(void);
 
 /* 에러 처리 및 종료 매크로 */
 #define SET_ERROR_AND_EXIT(err_code) do { \
@@ -106,20 +93,6 @@ int main(void) {
     // 랜덤 시드 설정
     srand(time(NULL));
 
-    // 터미널 설정
-    enable_raw_mode();
-    // 프로그램 종료 시 터미널 설정 복원 콜백함수 등록
-    atexit(disable_raw_mode);
-    // SIGINT 시그널 발생 (주로 ctrl+c) 시 사용자 정의 처리
-    signal(SIGINT, handle_sigint);
-
-    // 키보드 입력 스레드 생성
-    pthread_t kb_thread;
-    if (pthread_create(&kb_thread, NULL, keyboard_thread, NULL) != 0) {
-        log_error("Thread creation failed: %s", strerror(errno));
-        return ERR_THREAD_CREATION_FAILED;
-    }
-
     //chip8 초기화
     errcode_t init_err = init_chip8();
     if (init_err != ERR_NONE) {
@@ -127,7 +100,20 @@ int main(void) {
         return init_err;
     }
 
-    input_initialize(); //TODO: 에러코드 반환함.
+    // 추상화된 input 모듈 초기화
+    init_err = input_initialize();
+    if (init_err != ERR_NONE) {
+        log_error("Input module initialization failed: %d", init_err);
+        return init_err;
+    }
+
+    // 터미널 I/O 초기화 (raw 모드, 키보드 스레드 시작)
+    // g_state.quit의 주소를 넘겨서 키보드 스레드가 종료 시점을 알 수 있도록 함
+    init_err = terminal_io_init(&chip8, &g_state.quit);
+    if (init_err != ERR_NONE) {
+        log_error("Terminal I/O initialization failed: %d", init_err);
+        return init_err;
+    }
 
     // 에러 상태 초기화
     g_state.quit = false;
@@ -241,6 +227,8 @@ errcode_t cycle(void) {
     }
 
 exit_cycle:
+    //TODO: 에러 생겼을 떄 열려있는 파일, 리소스 정리도 다 해야함.
+    // 지금 init에서 바로 닫아버리고 아무튼 문제 많음
     input_shutdown();
     return g_state.error_code;
 }
@@ -665,73 +653,4 @@ void update_timers(const uint64_t tick_interval) {
         output_print_display(&chip8);
         accumulator -= TIMER_TICK_INTERVAL_NS;
     }
-}
-
-// 키보드 입력 처리 스레드 함수
-void *keyboard_thread(void *arg) {
-    (void) arg;
-    while (!g_state.quit) {
-        char c;
-        //TODO: ssize_t기 뭐지
-        const ssize_t bytes_read = read(STDIN_FILENO, &c, 1);
-        if (bytes_read > 0) {
-            // C가 keypad 값 안에 속하는지 체크, 아니면 스킵
-            const int key_idx = get_key_index(c);
-            if (key_idx >= 0) {
-                input_set_key_down(&chip8, key_idx);
-                log_trace("key pressed: %c (ASCII: %d), keypad[%d] = %d",
-                          c, (int)c, key_idx, chip8.keypad[key_idx]);
-            }
-        }
-    }
-    return NULL;
-}
-
-// 입력된 키에 해당하는 CHIP-8 키패드 인덱스를 반환
-int get_key_index(char key) {
-    // 대문자인 경우에만 소문자로 변환 (비트 OR 연산 사용)
-    if (key >= 'A' && key <= 'Z') {
-        key |= 0x20;
-    }
-
-    for (int i = 0; i < 16; i++) {
-        char mapped = KEY_MAPPING[i];
-        if (mapped >= 'A' && mapped <= 'Z') {
-            mapped |= 0x20;
-        }
-
-        if (mapped == key) {
-            return i;
-        }
-    }
-    return -1;
-}
-
-void handle_sigint(int sig) {
-    log_debug("here is handle_sigint()");
-    (void) sig;
-    g_state.quit = true;
-}
-
-// 터미널 raw 모드 진입
-void enable_raw_mode() {
-    // 파일 디스크립터 fildes에 연결된 터미널의 현재 속성을 읽어서 orig_term*에 저장
-    tcgetattr(STDIN_FILENO, &orig_term);
-    struct termios raw = orig_term;
-    // ECHO: 입력한 문자를 화면에 에코(반복) 출력
-    // ICANON: 캐논컬(라인 단위) 모드를 사용해 줄바꿈 전까지 입력을 버퍼에 저장
-    // ISIG: Ctrl-C, Ctrl-Z 등 시그널 생성 키를 처리
-    // 위 3가지 flag 비활성화
-    // c_lflag: local flags
-    raw.c_lflag &= ~(ECHO | ICANON | ISIG);
-    // c_cc: control chars
-    raw.c_cc[VMIN] = 0; //VMIN: 비캐논컬 모드에서 read()가 반환하기 위한 최소 바이트 수
-    raw.c_cc[VTIME] = 0; //VTIME: 비캐논컬 모드에서 read()가 타임아웃하기 전 대기 시간
-    // raw 설정을 STDIN_FILENO에 적용 (TCSANOW: 즉시 적용 flag)
-    tcsetattr(STDIN_FILENO, TCSANOW, &raw);
-}
-
-// 터미널 원복
-void disable_raw_mode() {
-    tcsetattr(STDIN_FILENO, TCSANOW, &orig_term);
 }
