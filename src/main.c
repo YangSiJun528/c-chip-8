@@ -35,8 +35,7 @@ static const char KEY_MAPPING[16] = {
     'z', 'x', 'c', 'v' // C, D, E, F
 };
 
-
-static struct chip8 chip8;
+static chip8_t chip8;
 
 // CHIP-8 폰트 집합 (0–F, 총 16자 × 5바이트 = 80바이트)
 static const uint8_t chip8_fontset[80] = {
