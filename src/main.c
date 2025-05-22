@@ -35,8 +35,6 @@ static const char KEY_MAPPING[16] = {
     'z', 'x', 'c', 'v' // C, D, E, F
 };
 
-// 뮤텍스 선언 - last_key 접근 시 사용
-static pthread_mutex_t input_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 static struct chip8 chip8;
 
