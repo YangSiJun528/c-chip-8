@@ -17,6 +17,7 @@
 #include "chip8_struct.h"
 #include "chip8_config.h"
 #include "input.h"
+#include "output.h"
 
 /* 전역 상태 변수 */
 static struct {
@@ -647,25 +648,21 @@ static uint64_t get_current_time_ns(errcode_t *errcode) {
     return (uint64_t) ts.tv_sec * NANOSECONDS_PER_SECOND + ts.tv_nsec;
 }
 
-//TODO: 굳이 함수로 뺄 필요까진 없었나 재사용하지도 않을껀데
 void update_timers(const uint64_t tick_interval) {
     static u_int64_t accumulator = 0; // static이라 접근 제한된 전역 변수처럼 동작
 
     accumulator += tick_interval;
 
-    //TODO: 1번 이상의 처리가 생기는 경우는 경고해야 하나? 느리게 수행되었다는거니까?
-    // 지금 호출에서는 고정된 tick_interval 값을 증가하니까 발생하지 않아서 굳이?
     while (accumulator >= TIMER_TICK_INTERVAL_NS) {
         if (chip8.sound_timer > 0) {
             --chip8.sound_timer;
-            sound_beep();
+            output_sound_beep();
         }
         if (chip8.delay_timer > 0) {
             --chip8.delay_timer;
         }
-        //TODO: 여기 리팩토링좀 하기
-        clear_display();
-        print_display(&chip8);
+        output_clear_display();
+        output_print_display(&chip8);
         accumulator -= TIMER_TICK_INTERVAL_NS;
     }
 }
@@ -737,46 +734,4 @@ void enable_raw_mode() {
 // 터미널 원복
 void disable_raw_mode() {
     tcsetattr(STDIN_FILENO, TCSANOW, &orig_term);
-}
-
-void print_border(void) {
-    putchar('+');
-    for (int i = 0; i < DISPLAY_WIDTH * 2; i++)
-        putchar('-');
-    puts("+");
-}
-
-void print_display(const struct chip8 *chip) {
-    if (!chip) {
-        fputs("Error: Invalid chip8 pointer\n", stderr);
-        return;
-    }
-
-    print_border();
-
-    for (int y = 0; y < DISPLAY_HEIGHT; y++) {
-        putchar('|');
-        int row_offset = y * DISPLAY_WIDTH_BYTES;
-
-        for (int x = 0; x < DISPLAY_WIDTH; x++) {
-            int byte_index = row_offset + (x >> 3);
-            int bit_index = 7 - (x & 7);
-            uint8_t pixel = (chip->display[byte_index] >> bit_index) & 1;
-            printf("%s", pixel ? PIXEL_ON_STR : PIXEL_OFF_STR);
-        }
-
-        puts("|");
-    }
-
-    print_border();
-}
-
-void clear_display(void) {
-    write(STDOUT_FILENO, "\x1b[2J", 4); // 전체 지우기
-    write(STDOUT_FILENO, "\x1b[H", 3); // 커서 홈
-}
-
-void sound_beep(void) {
-    printf("\a"); // 비프 음 내기
-    fflush(stdout); // 버퍼 비우기 - 바로 출력
 }

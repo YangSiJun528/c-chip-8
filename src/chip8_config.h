@@ -30,5 +30,6 @@
 
 #define PIXEL_ON_STR   "██" // 글자는 가로로 기니까 크기를 맞추기 위해서 2글자씩 사용
 #define PIXEL_OFF_STR  "  "
+#define PIXEL_STR_LEN  2
 
 #endif // CHIP8_CONFIG_H
