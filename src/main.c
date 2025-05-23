@@ -32,7 +32,6 @@ static chip8_t chip8;
 /* 함수 선언 */
 errcode_t cycle(void);
 static uint64_t get_current_time_ns(errcode_t *errcode);
-void update_timers(uint64_t tick_interval);
 
 /* 에러 처리 및 종료 매크로 */
 #define SET_ERROR_AND_EXIT_CYCLE(err_code) do { \
@@ -43,7 +42,6 @@ goto exit_cycle_label; \
 
 
 static errcode_t initialize_logging(FILE** log_file_ptr, const char* log_filename_suffix);
-static void initialize_chip8_core(chip8_t* ch8);
 static errcode_t load_rom_to_chip8_memory(chip8_t* ch8, const char* rom_filename);
 static errcode_t initialize_platform_modules(chip8_t* ch8, bool* quit_flag);
 static void shutdown_platform_modules(void); // terminal_io_shutdown()이 있다고 가정
@@ -66,7 +64,7 @@ int main(void) {
     log_debug("Random seed set.");
 
     // 3. Chip-8 코어 상태 초기화
-    initialize_chip8_core(&chip8);
+    initialize_chip8(&chip8);
     log_info("Chip-8 core initialized.");
 
     // 4. ROM 로드
@@ -179,7 +177,7 @@ errcode_t cycle(void) {
         }
 
         // 다음 틱 구하기 - 이거 여기 있는게 맞나
-        update_timers(tick_interval);
+        update_timers(&chip8 , tick_interval);
 
         // 다음 tick 계산
         next_tick += tick_interval;
@@ -248,25 +246,6 @@ static uint64_t get_current_time_ns(errcode_t *errcode) {
     return (uint64_t) ts.tv_sec * NANOSECONDS_PER_SECOND + ts.tv_nsec;
 }
 
-void update_timers(const uint64_t tick_interval) {
-    static u_int64_t accumulator = 0; // static이라 접근 제한된 전역 변수처럼 동작
-
-    accumulator += tick_interval;
-
-    while (accumulator >= TIMER_TICK_INTERVAL_NS) {
-        if (chip8.sound_timer > 0) {
-            --chip8.sound_timer;
-            output_sound_beep();
-        }
-        if (chip8.delay_timer > 0) {
-            --chip8.delay_timer;
-        }
-        output_clear_display();
-        output_print_display(&chip8);
-        accumulator -= TIMER_TICK_INTERVAL_NS;
-    }
-}
-
 static errcode_t initialize_logging(FILE** log_file_ptr, const char* log_filename_suffix) {
     char log_path[512];
     int written = snprintf(log_path, sizeof(log_path), "%s%s", PROJECT_PATH, log_filename_suffix);
@@ -284,14 +263,6 @@ static errcode_t initialize_logging(FILE** log_file_ptr, const char* log_filenam
     log_add_fp(*log_file_ptr, LOG_LEVEL); // LOG_LEVEL은 컴파일 시점에 결정
     log_set_level(LOG_INFO); // 또는 원하는 기본 레벨
     return ERR_NONE;
-}
-
-static void initialize_chip8_core(chip8_t* ch8) {
-    assert(ch8 != NULL);
-
-    memset(ch8, 0, sizeof(chip8_t));
-    ch8->pc = PROGRAM_START_ADDR;
-    memcpy(ch8->memory + FONTSET_ADDR, chip8_fontset, sizeof(chip8_fontset));
 }
 
 static errcode_t load_rom_to_chip8_memory(chip8_t* ch8, const char* rom_filename) {

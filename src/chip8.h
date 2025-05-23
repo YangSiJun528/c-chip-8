@@ -2,6 +2,7 @@
 #define CHIP8_STRUCT_H
 
 #include <stdint.h>
+
 #include "global_config.h"
 
 struct chip8 {
@@ -18,5 +19,8 @@ struct chip8 {
 };
 
 typedef struct chip8 chip8_t;
+
+void initialize_chip8(chip8_t* chip8);
+void update_timers(chip8_t *chip8, uint64_t tick_interval);
 
 #endif // CHIP8_STRUCT_H

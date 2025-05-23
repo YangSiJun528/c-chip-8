@@ -4,7 +4,7 @@ project(c_chip_8 C)
 set(CMAKE_C_STANDARD 99)
 
 add_executable(c_chip_8 src/main.c src/log.c
-        src/global_config.h src/chip8.h
+        src/global_config.h src/chip8.h src/chip8.c
         src/input.h src/input.c src/output.c src/output.h
         src/terminal_io.c src/terminal_io.h
         src/errcode.c src/errcode.h
