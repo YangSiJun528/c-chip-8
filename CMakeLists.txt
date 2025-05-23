@@ -8,4 +8,5 @@ add_executable(c_chip_8 src/main.c src/log.c
         src/input.h src/input.c src/output.c src/output.h
         src/terminal_io.c src/terminal_io.h
         src/errcode.c src/errcode.h
+        src/instruction.c src/instruction.h
 )
