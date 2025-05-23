@@ -2,7 +2,7 @@
 #define CHIP8_STRUCT_H
 
 #include <stdint.h>
-#include "chip8_config.h"
+#include "global_config.h"
 
 struct chip8 {
     uint8_t memory[MEMORY_MAX_SIZE];       // 최대 4kb

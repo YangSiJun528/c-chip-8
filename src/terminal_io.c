@@ -3,7 +3,7 @@
 #include "input.h" // input_set_key_down 사용
 #include "log.h"
 #include "errcode.h"
-#include "chip8_config.h" // KEY_MAPPING을 여기서 정의하거나 chip8_config.h에서 가져올 수 있음
+#include "global_config.h" // KEY_MAPPING을 여기서 정의하거나 chip8_config.h에서 가져올 수 있음
 
 #include <termios.h>
 #include <unistd.h>  // STDIN_FILENO, read

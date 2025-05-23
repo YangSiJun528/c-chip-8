@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include "output.h"
-#include "chip8_config.h"
+#include "global_config.h"
 #include "chip8_struct.h"
 
 static void print_border(void);

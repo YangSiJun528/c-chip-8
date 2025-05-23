@@ -3,7 +3,7 @@
 
 #include "errcode.h"
 #include "chip8_struct.h"
-#include "chip8_config.h" // INPUT_TICK 사용을 위해 추가
+#include "global_config.h" // INPUT_TICK 사용을 위해 추가
 #include <pthread.h>
 #include <stdbool.h> // bool 사용을 위해 추가
 #include <stdint.h>  // uint8_t, int8_t 사용을 위해 추가
