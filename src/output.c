@@ -2,7 +2,7 @@
 #include <unistd.h>
 #include "output.h"
 #include "global_config.h"
-#include "chip8_struct.h"
+#include "chip8.h"
 
 static void print_border(void);
 

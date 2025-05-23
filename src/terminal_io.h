@@ -1,7 +1,7 @@
 #ifndef TERMINAL_IO_H
 #define TERMINAL_IO_H
 #include "errcode.h"
-#include "chip8_struct.h"
+#include "chip8.h"
 #include <stdbool.h>
 
  // 초기화: raw 모드 설정, 키보드 스레드 시작

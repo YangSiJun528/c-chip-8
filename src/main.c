@@ -11,7 +11,7 @@
 
 #include "log.h"
 #include "errcode.h"
-#include "chip8_struct.h"
+#include "chip8.h"
 #include "global_config.h"
 #include "input.h"
 #include "instruction.h"

@@ -2,7 +2,7 @@
 #define INPUT_H
 
 #include "errcode.h"
-#include "chip8_struct.h"
+#include "chip8.h"
 #include "global_config.h" // INPUT_TICK 사용을 위해 추가
 #include <pthread.h>
 #include <stdbool.h> // bool 사용을 위해 추가
