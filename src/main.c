@@ -32,6 +32,7 @@ static chip8_t chip8;
 /* 함수 선언 */
 errcode_t cycle(void);
 static uint64_t get_current_time_ns(errcode_t *errcode);
+static void update_timers(chip8_t *chip8, uint64_t tick_interval);
 
 /* 에러 처리 및 종료 매크로 */
 #define SET_ERROR_AND_EXIT_CYCLE(err_code) do { \
@@ -363,4 +364,23 @@ static void shutdown_platform_modules(void) {
 
     input_shutdown();
     log_debug("Input module shut down.");
+}
+
+static void update_timers(chip8_t *chip8, uint64_t tick_interval) {
+    static u_int64_t accumulator = 0; // static이라 접근 제한된 전역 변수처럼 동작
+
+    accumulator += tick_interval;
+
+    while (accumulator >= TIMER_TICK_INTERVAL_NS) {
+        output_clear_display();
+        output_print_display(chip8);
+        if (chip8->sound_timer > 0) {
+            --chip8->sound_timer;
+            output_sound_beep();
+        }
+        if (chip8->delay_timer > 0) {
+            --chip8->delay_timer;
+        }
+        accumulator -= TIMER_TICK_INTERVAL_NS;
+    }
 }

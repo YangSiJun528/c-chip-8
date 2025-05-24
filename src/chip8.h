@@ -15,12 +15,12 @@ struct chip8 {
     uint8_t delay_timer;        // 딜레이
     uint8_t sound_timer;        // 사운드
     uint8_t display[DISPLAY_WIDTH_BYTES * DISPLAY_HEIGHT]; // 64 * 32 디스플레이
-    volatile uint8_t keypad[NUM_KEYS]; // 키패드 상태를 저장하는 배열, 각 키의 잔여 틱 수를 저장
+    // 하드웨어 구현이라면 메모리에 포함되지 않고, CPU가 바로 입력 컨트롤러에 접근하는 식으로 될 듯?
+    uint8_t keypad[NUM_KEYS]; // 키패드 상태를 저장하는 배열, 각 키의 잔여 틱 수를 저장
 };
 
 typedef struct chip8 chip8_t;
 
 void initialize_chip8(chip8_t* chip8);
-void update_timers(chip8_t *chip8, uint64_t tick_interval);
 
 #endif // CHIP8_STRUCT_H
