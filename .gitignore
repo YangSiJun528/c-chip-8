@@ -1,4 +1,5 @@
 mylog.txt
+.idea/**
 
 # Created by https://www.toptal.com/developers/gitignore/api/c,clion+all,cmake,macos,linux,windows
 # Edit at https://www.toptal.com/developers/gitignore?templates=c,clion+all,cmake,macos,linux,windows
