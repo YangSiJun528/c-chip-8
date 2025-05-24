@@ -667,7 +667,8 @@ static errcode_t init_chip8(void) {
 
     memcpy(chip8.memory + FONTSET_ADDR, chip8_fontset, sizeof(chip8_fontset));
 
-    const char *rom_filename = "Tetris [Fran Dachille, 1991].ch8";
+    const char *rom_filename = "Pong (1 player).ch8";
+    //const char *rom_filename = "Tetris [Fran Dachille, 1991].ch8";
 
     const int DEST_SIZE = 512;
     char rom_path[DEST_SIZE];
