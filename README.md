@@ -8,6 +8,11 @@
 
 C언어로 작성된 CHIP-8 에뮬레이터입니다. 이 프로젝트는 C언어를 처음 배우면서 만든 첫 번째 프로젝트로, 외부 라이브러리 의존성을 최소화하고 터미널 환경에서 동작하는 CHIP-8 에뮬레이터를 구현했습니다.
 
+https://github.com/user-attachments/assets/5a32d85b-1685-42cb-98b4-dfeb2fcfb3d1
+
+https://github.com/user-attachments/assets/847f2bfb-0ee8-4e85-8c2b-a3846283be91
+
+
 ## 프로젝트 소개
 
 CHIP-8은 1970년대에 개발된 간단한 가상 머신으로, 게임 개발을 위해 설계되었습니다. 이 프로젝트는 CHIP-8의 명세를 따라 에뮬레이터를 구현하여 Pong, Tetris 등의 고전 게임을 실행할 수 있게 합니다.
